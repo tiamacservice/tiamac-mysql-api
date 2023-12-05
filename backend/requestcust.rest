@@ -1,0 +1,74 @@
+POST http://localhost:5000/customers
+Content-Type: application/json
+
+{
+    "name": "cust1",
+    "email" : "cust2@gmail.com",
+    "password": "112233",
+    "confPassword": "112233",
+    "no_telp" : "0812341234",
+    "provinsi" : "Jakarta timur",
+    "alamat" : "Cengkareng, kapuk"
+
+}
+###
+///melihat semua customer
+GET http://localhost:5000/customers
+
+###
+//Login Customer
+POST http://localhost:5000/logincust
+Content-Type: application/json
+
+{
+
+    "email" : "budi@gmail.com",
+    "password": "123456"
+
+}
+
+###
+//Delete User
+DELETE  http://localhost:5000/customers/07d03f5b-6bcb-46bc-b85e-95bb8be58666
+
+###
+//Me (Session)
+GET http://localhost:5000/mecust
+
+###
+//Logout
+DELETE http://localhost:5000/Logout
+
+###
+//create new booking servis
+POST http://localhost:5000/newservis
+Content-Type: application/json
+
+{
+    "provinsi" : "Jakarta Barat",
+    "alamat" : "Cengkareng GangsetiaIII",
+    "ser1" : "Cuci 1pk",
+    "ser2" : "las + isi freon 1pk",
+    "ser3" : "ganti transistor 1pk",
+    "ser4" : "bongkar pasang 2pk",
+    "hrg1" : 200000,
+    "hrg2" : 300000,
+    "hrg3" : 400000,
+    "hrg4" : 500000
+}
+
+###
+//create new booking servis
+POST http://localhost:5000/servis
+Content-Type: application/json
+
+{
+    "totalHarga": 200000,
+    "dateServis" : "2023-07-27"
+}
+
+custservis
+
+
+
+

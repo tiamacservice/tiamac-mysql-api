@@ -1,0 +1,109 @@
+###
+//create new booking servis
+POST http://localhost:5000/newservis
+Content-Type: application/json
+
+{
+    "provinsi" : "Jakarta Barat",
+    "alamat" : "Cengkareng GangsetiaIII",
+    "ser1" : "Cuci 1pk",
+    "ser2" : "las + isi freon 1pk",
+    "ser3" : "ganti transistor 1pk",
+    "ser4" : "bongkar pasang 2pk",
+    "hrg1" : 200000,
+    "hrg2" : 300000,
+    "hrg3" : 400000,
+    "hrg4" : 500000
+}
+
+###
+//Login Customer
+POST http://localhost:5000/logincust
+Content-Type: application/json
+
+{
+
+    "email" : "cust2@gmail.com",
+    "password": "112233"
+
+}
+
+###
+//Login User
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+
+    "email" : "john@gmail.com",
+    "password": "123456"
+
+}
+
+###
+//Me (Session)
+GET http://localhost:5000/me
+
+###
+//Logout
+DELETE http://localhost:5000/Logout
+
+###
+//Login Admin
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+
+    "email" : "admin@gmail.com",
+    "password": "123456"
+
+}
+
+###
+//Get All Servis
+GET http://localhost:5000/servis
+
+###
+//Get All Servis
+GET http://localhost:5000/custservis
+
+
+###
+//Updet Servis
+PATCH http://localhost:5000/penjadwalanservis/c753ba94-81a0-4fb9-ac08-f01def5656e1
+Content-Type: application/json
+
+{
+    "dateServis": "2023-05-10", 
+    "status" : "Konfirmasi Teknisi", 
+    "userId" : 3
+}
+
+###
+//Get spesific Servis
+GET http://localhost:5000/allpenjadwalan
+
+###
+//get single servis
+
+GET http://localhost:5000/servisbyid/182f2ecb-5e0d-483d-af62-0648db7dee14
+
+
+###
+//Konfirmasi Teknisi
+PATCH http://localhost:5000/formkonfirmasiteknisi/3d48ae47-bb23-4ea6-adf4-29178852d536
+Content-Type: application/json
+
+{
+    "ser1" : "UPPPPPPPPP",
+    "ser2" : "lUPPPPPPPPPk",
+    "ser3" : "UPPPPPPPPP",
+    "ser4" : "UPPPPPPPPP",
+    "status" : "Menunggu Pembayaran",
+    "hrg1" : 777777,
+    "hrg2" : 777777,
+    "hrg3" : 777777,
+    "hrg4" : 777777,
+    "totalHarga" : 60000
+}

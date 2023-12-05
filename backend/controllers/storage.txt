@@ -1,0 +1,20 @@
+export const newbooking = async (req, res) => {
+  const { totalHarga, dateServis, name, price } = req.body;
+  try {
+    await Servis.create({
+      totalHarga: totalHarga,
+      dateServis: dateServis,
+      status: "Menunggu Admin",
+      customerId: req.customerId,
+    });
+
+    await PriceService.create({
+      name: name,
+      price: price,
+    });
+
+    res.status(201).json({ msg: "Pelayanan Servis Berhasil Dipesan" });
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+};

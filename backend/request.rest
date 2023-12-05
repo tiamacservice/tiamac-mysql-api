@@ -1,0 +1,123 @@
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "ryan",
+    "email" : "@gmail.com",
+    "password": "123456",
+    "confPassword": "123456",
+    "role": "admin"
+}
+
+###
+//get all user
+
+GET http://localhost:5000/users
+
+###
+//get single user
+
+GET http://localhost:5000/users/183a96f2-4629-44f3-b7ff-4d1c5e7996e4/
+
+###
+//Update User
+
+PATCH  http://localhost:5000/users183a96f2-4629-44f3-b7ff-4d1c5e7996e4
+Content-Type: application/json
+
+{
+    "name": "John update",
+    "email" : "john@gmail.com",
+    "password": "",
+    "confPassword": "",
+    "role": "karyawan"
+}
+
+###
+//Delete User
+DELETE  http://localhost:5000/users183a96f2-4629-44f3-b7ff-4d1c5e7996e4
+
+
+###
+//Login User
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+
+    "email" : "john@gmail.com",
+    "password": "123456"
+
+}
+
+###
+//Login Admin
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+
+    "email" : "admin@gmail.com",
+    "password": "123456"
+
+}
+
+###
+//Get All Servis
+GET http://localhost:5000/servis
+
+
+###
+//Me (Session)
+GET http://localhost:5000/me
+
+###
+//Logout
+DELETE http://localhost:5000/Logout
+
+###
+//get all product
+
+GET http://localhost:5000/products
+
+###
+//Buat produk
+POST http://localhost:5000/products
+Content-Type: application/json
+
+{
+    "name": "produk admin",
+    "price": 1234
+}
+
+###
+//get single product
+
+GET http://localhost:5000/products/4a0113da-abf8-45d9-8f39-387355770fc9
+
+
+###
+//Updet Prduk
+PATCH http://localhost:5000/products/1ec2f614-746d-4ef7-9be5-56d231027a7c
+Content-Type: application/json
+
+{
+    "name": "produk ueeeed",
+    "price": 123
+}
+
+###
+//Updet Servis
+PATCH http://localhost:5000/penjadwalanservis/c753ba94-81a0-4fb9-ac08-f01def5656e1
+Content-Type: application/json
+
+{
+    "dateServis":2023-05-09, 
+    "userId" :3
+}
+
+###
+//delete Prduk
+DELETE http://localhost:5000/products/4a0113da-abf8-45d9-8f39-387355770fc9
+
+
