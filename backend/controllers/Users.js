@@ -1,5 +1,4 @@
 import User from "../models/UserModel.js";
-import argon2 from "argon2";
 
 export const getUsers = async (req, res) => {
   try {
@@ -30,12 +29,11 @@ export const createUser = async (req, res) => {
   const { name, email, password, confPassword, role } = req.body;
   if (password !== confPassword)
     return res.status(400).json({ msg: "Password dan confirm tidak cocok" });
-  const hashPassword = await argon2.hash(password);
   try {
     await User.create({
       name: name,
       email: email,
-      password: hashPassword,
+      password: password,
       role: role,
     });
     res.status(201).json({ msg: "Register berhasil" });
@@ -52,12 +50,6 @@ export const updateUser = async (req, res) => {
   });
   if (!user) return res.status(404).json({ msg: "User tidak ditemukan" });
   const { name, email, password, confPassword, role } = req.body;
-  let hashPassword;
-  if (password === "" || password === null) {
-    hashPassword = user.password;
-  } else {
-    hashPassword = await argon2.hash(password);
-  }
   if (password !== confPassword)
     return res.status(400).json({ msg: "Password dan confirm tidak cocok" });
   try {
@@ -65,7 +57,7 @@ export const updateUser = async (req, res) => {
       {
         name: name,
         email: email,
-        password: hashPassword,
+        password: password,
         role: role,
       },
       {

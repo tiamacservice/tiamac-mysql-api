@@ -1,5 +1,4 @@
 import Customer from "../models/CustomerModel.js";
-import argon2 from "argon2";
 
 export const getCustomers = async (req, res) => {
   try {
@@ -39,12 +38,11 @@ export const createCustomer = async (req, res) => {
     req.body;
   if (password !== confPassword)
     return res.status(400).json({ msg: "Password dan confirm tidak cocok" });
-  const hashPassword = await argon2.hash(password);
   try {
     await Customer.create({
       name: name,
       email: email,
-      password: hashPassword,
+      password: password,
       no_telp: no_telp,
       provinsi: provinsi,
       alamat: alamat,

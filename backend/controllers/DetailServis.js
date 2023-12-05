@@ -2,7 +2,6 @@ import Servis from "../models/ServisModel.js";
 import Customer from "../models/CustomerModel.js";
 import User from "../models/UserModel.js";
 import { Op } from "sequelize";
-import argon2 from "argon2";
 
 // get servis
 export const getServices = async (req, res) => {
