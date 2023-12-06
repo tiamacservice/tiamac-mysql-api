@@ -1,5 +1,4 @@
 import User from "../models/UserModel.js";
-// import argon2 from "argon2";
 import Customer from "../models/CustomerModel.js";
 
 export const Login = async (req, res) => {
@@ -9,7 +8,6 @@ export const Login = async (req, res) => {
     },
   });
   if (!user) return res.status(404).json({ msg: "User tidak ditemukan" });
-  // const match = await argon2.verify(user.password, req.body.password);
   if (user.password !== req.body.password)
     return res.status(400).json({ msg: "Wrong Password" });
   req.session.userId = user.uuid;
@@ -52,7 +50,6 @@ export const LoginCustomer = async (req, res) => {
   });
   if (!customer)
     return res.status(404).json({ msg: "customer tidak ditemukan" });
-  // const match = await argon2.verify(customer.password, req.body.password);
   if (customer.password !== req.body.password)
     return res.status(400).json({ msg: "Wrong Password" });
   req.session.customerId = customer.uuid;
