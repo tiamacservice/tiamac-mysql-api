@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
-const ListAllServisCust = () => {
+const ListAllServis = () => {
   const [servis, setServis] = useState([]);
   const { user } = useSelector((state) => state.auth);
 
@@ -72,4 +72,4 @@ const ListAllServisCust = () => {
   );
 };
 
-export default ListAllServisCust;
+export default ListAllServis;

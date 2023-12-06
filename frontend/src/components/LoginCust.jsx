@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LoginCustomer, reset } from "../features/authSlice";
-import { NavLink } from "react-router-dom";
 
 const LoginCust = () => {
   const [email, setEmail] = useState("");
@@ -65,12 +64,6 @@ const LoginCust = () => {
                   >
                     {isLoading ? "Loading..." : "Login"}
                   </button>
-                  <NavLink
-                    to="/loginstaff"
-                    className="button is-info is-fullwidth mt-4"
-                  >
-                    Login Staff
-                  </NavLink>
                 </div>
               </form>
             </div>
