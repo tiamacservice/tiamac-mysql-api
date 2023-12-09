@@ -3,6 +3,16 @@ import Customer from "../models/CustomerModel.js";
 import User from "../models/UserModel.js";
 import { Op } from "sequelize";
 
+
+import midtransClient from "midtrans-client";
+
+// get servis
+
+export const snap = new midtransClient.Snap({
+  isProduction: false, // Ganti ke true jika sudah produksi
+  serverKey: 'SB-Mid-server-fF93jgqGf3K3tpUumtK1BFFV', // Ganti dengan kunci server Midtrans Anda
+});
+
 // get servis
 export const getServices = async (req, res) => {
   try {
@@ -77,6 +87,54 @@ export const getServices = async (req, res) => {
     res.status(500).json({ msg: error.message });
   }
 };
+
+export const getTokenPayment = async (req, res) => {
+  // console.log(req.params.id);
+  const servis = await Servis.findOne({
+    where: {
+      uuid: req.params.id,
+    },
+  });
+  const orderId = servis.uuid; // Buat orderId unik
+  
+  // const transactionDetails = {
+  //   orderId:servis.uuid,
+  //   grossAmount: 200000, // Ganti dengan jumlah pembayaran yang diinginkan
+  // };
+
+  let parameter = {
+    "transaction_details": {
+        "order_id": orderId,
+        "gross_amount": servis.totalHarga
+    },
+    "credit_card":{
+        "secure" : true
+    },
+    "customer_details": {
+        "first_name": "budi",
+        "last_name": "pratama",
+        "email": "budi.pra@example.com",
+        "phone": "08111222333"
+    }
+};
+
+// snap.createTransaction(parameter)
+// .then((transaction)=>{
+//     // transaction token
+//     let transactionToken = transaction.token;
+//     console.log('transactionToken:',transactionToken);
+// })
+
+  try {
+    const tokenResponse = await snap.createTransaction(parameter);
+    console.error(tokenResponse);
+
+    res.json({ token: tokenResponse.token });
+  } catch (error) {
+    console.error('Error creating transaction token:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 
 export const getServisId = async (req, res) => {
   try {

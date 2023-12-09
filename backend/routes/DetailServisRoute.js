@@ -18,6 +18,7 @@ import {
   getMenungguPembayaranCust,
   getKonfirmasiCustomerCust,
   getServisSelesaiCust,
+  getTokenPayment,
 } from "../controllers/DetailServis.js";
 import {
   verifyUser,
@@ -52,5 +53,6 @@ router.get("/servisselesai/", verifyCustomer, getServisSelesaiCust);
 router.post("/newservis", verifyCustomer, newservis);
 router.patch("/penjadwalanservis/:id", verifyUser, PenjadwalanServis);
 router.patch("/formkonfirmasiteknisi/:id", verifyUser, konfirmasiTeknisi);
+router.get("/gettokenmidtrans/:id", verifyCustomer, getTokenPayment);
 
 export default router;
