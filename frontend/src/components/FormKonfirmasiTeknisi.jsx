@@ -25,7 +25,7 @@ const FormEditProduct = () => {
     const getServisById = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/servisbyid/${id}`
+          process.env.REACT_APP_API_KEY+`/servisbyid/${id}`
         );
         setSer1(response.data.ser1);
         setSer2(response.data.ser2);
@@ -53,7 +53,7 @@ const FormEditProduct = () => {
   const konfirmasiTeknisi = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:5000/formkonfirmasiteknisi/${id}`, {
+      await axios.patch(process.env.REACT_APP_API_KEY+`/formkonfirmasiteknisi/${id}`, {
         ser1: ser1,
         ser2: ser2,
         ser3: ser3,

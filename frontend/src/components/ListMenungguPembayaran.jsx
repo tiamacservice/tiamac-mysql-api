@@ -11,13 +11,13 @@ const ListMenungguPembayaran = () => {
 
   const getServis = async () => {
     const response = await axios.get(
-      "http://localhost:5000/allmenunggupembayaran"
+      process.env.REACT_APP_API_KEY+`/allmenunggupembayaran`
     );
     setServis(response.data);
   };
 
   const deleteServis = async (ServisId) => {
-    await axios.delete(`http://localhost:5000/servis/${ServisId}`);
+    await axios.delete(process.env.REACT_APP_API_KEY+`/servis/${ServisId}`);
     getServis();
   };
 

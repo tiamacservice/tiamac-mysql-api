@@ -13,7 +13,7 @@ const FormPenjadwalan = () => {
     const getServisById = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/servisbyid/${id}`
+          process.env.REACT_APP_API_KEY+`/servisbyid/${id}`
         );
         setdateServis(response.data.dateServis);
         setUserId(response.data.userId);
@@ -29,7 +29,7 @@ const FormPenjadwalan = () => {
   const PenjadwalanServis = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:5000/penjadwalanservis/${id}`, {
+      await axios.patch(process.env.REACT_APP_API_KEY+`/penjadwalanservis/${id}`, {
         status: "Konfirmasi Teknisi",
         dateServis: dateServis,
         userId: userId,

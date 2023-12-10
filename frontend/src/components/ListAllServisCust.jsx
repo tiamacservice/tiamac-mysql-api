@@ -12,12 +12,12 @@ const ListAllServisCust = () => {
   }, []);
 
   const getServis = async () => {
-    const response = await axios.get("http://localhost:5000/custservis");
+    const response = await axios.get(process.env.REACT_APP_API_KEY+`/custservis`);
     setServis(response.data);
   };
 
   const deleteServis = async (ServisId) => {
-    await axios.delete(`http://localhost:5000/servis/${ServisId}`);
+    await axios.delete(process.env.REACT_APP_API_KEY+`/servis/${ServisId}`);
     getServis();
   };
 

@@ -4,22 +4,69 @@ import axios from "axios";
 
 const ListMenungguPembayaranCust = () => {
   const [servis, setServis] = useState([]);
+  const [snap, setSnap] = useState(null);
 
   useEffect(() => {
     getServis();
+    initSnap();
   }, []);
 
   const getServis = async () => {
     const response = await axios.get(
-      "http://localhost:5000/menunggupembayaran"
+      process.env.REACT_APP_API_KEY+"/menunggupembayaran"
     );
     setServis(response.data);
   };
 
+  const getServisPaymentToken = async (servis) => {
+    
+    const response = await axios.get(
+      process.env.REACT_APP_API_KEY+"/gettokenmidtrans/"+servis
+    );
+
+    if(response.status==200){
+      let token = response.data.token;
+      handlePay(token)
+    }
+    console.log(response);
+  };
+
+  const initSnap= async () => {
+    const { NODE_ENV: ENV } = process.env;
+
+    // create element for script
+    const snapScript = document.createElement('script');
+
+    // checking environment mode
+    snapScript.src =
+      ENV === 'production'
+        ? 'https://app.midtrans.com/snap/snap.js'
+        : 'https://app.sandbox.midtrans.com/snap/snap.js';
+
+    snapScript.type = 'text/javascript';
+    snapScript.onload = () => {
+      if ('snap' in window) {
+        const { snap } = window;
+        setSnap(snap);
+      }
+    };
+    snapScript.dataset.clientKey = "SB-Mid-client-ezJ53UeHaYDHkJwZ";
+    document.head.appendChild(snapScript);
+  }
+
   const deleteServis = async (ServisId) => {
-    await axios.delete(`http://localhost:5000/servis/${ServisId}`);
+    await axios.delete(process.env.REACT_APP_API_KEY+`/servis/${ServisId}`);
     getServis();
   };
+
+
+
+
+  const handlePay = async (transactionToken) => {
+    console.log('asdasdas');
+    snap.pay(transactionToken);
+  };
+
 
   return (
     <div>
@@ -48,9 +95,15 @@ const ListMenungguPembayaranCust = () => {
               <td>{servis.totalHarga}</td>
               <td>{servis.status}</td>
               <td>
-                <Link to={`/dashboard`} className="button is-small is-info">
+                {/* <Link to={`/dashboard`} className="button is-small is-info">
                   Proses Pembayaran
-                </Link>
+                </Link> */}
+                <button
+                  onClick={() => getServisPaymentToken(servis.uuid)}
+                  className="button is-small is-info"
+                >
+                   Proses Pembayaran
+                </button>
                 <Link
                   to={`/servis/detailcust/${servis.uuid}`}
                   className="button is-small is-info"

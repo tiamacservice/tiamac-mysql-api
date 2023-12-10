@@ -16,7 +16,7 @@ const FormRegister = () => {
   const saveCustomer = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/customers", {
+      await axios.post(process.env.REACT_APP_API_KEY+`/customers`, {
         name: name,
         email: email,
         no_telp: no_telp,

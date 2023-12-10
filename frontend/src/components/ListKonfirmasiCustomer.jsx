@@ -11,13 +11,13 @@ const ListKonfirmasiCustomer = () => {
 
   const getServis = async () => {
     const response = await axios.get(
-      "http://localhost:5000/allkonfirmasicustomer"
+      process.env.REACT_APP_API_KEY+`/allkonfirmasicustomer`
     );
     setServis(response.data);
   };
 
   const deleteServis = async (ServisId) => {
-    await axios.delete(`http://localhost:5000/servis/${ServisId}`);
+    await axios.delete(process.env.REACT_APP_API_KEY+`/servis/${ServisId}`);
     getServis();
   };
 

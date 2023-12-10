@@ -10,12 +10,12 @@ const Customerlist = () => {
   }, []);
 
   const getCustomers = async () => {
-    const response = await axios.get("http://localhost:5000/customers");
+    const response = await axios.get(process.env.REACT_APP_API_KEY+"/customers");
     setCustomers(response.data);
   };
 
   const deleteUsers = async (customerId) => {
-    await axios.delete(`http://localhost:5000/customers/${customerId}`);
+    await axios.delete(process.env.REACT_APP_API_KEY+`/customers/${customerId}`);
     getCustomers();
   };
 

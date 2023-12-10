@@ -21,7 +21,7 @@ const NewPesanan = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/newservis", {
+      await axios.post(process.env.REACT_APP_API_KEY+`/newservis`, {
         ser1: ser1,
         ser2: ser2,
         ser3: ser3,

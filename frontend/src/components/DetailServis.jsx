@@ -26,7 +26,7 @@ const DetailServis = () => {
     const getServisById = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/servisbyid/${id}`
+          process.env.REACT_APP_API_KEY+`/servisbyid/${id}`
         );
         setSer1(response.data.ser1);
         setSer2(response.data.ser2);
