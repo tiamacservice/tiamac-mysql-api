@@ -290,7 +290,7 @@ export const newservis = async (req, res) => {
       hrg2: hrg2,
       hrg3: hrg3,
       hrg4: hrg4,
-      totalHarga: hrg1 + hrg2 + hrg3 + hrg4,
+      totalHarga: parseInt(hrg1)  + parseInt(hrg2) + parseInt(hrg3) + parseInt(hrg4),
       provinsi: provinsi,
       alamat: alamat,
 
