@@ -40,7 +40,7 @@ app.use(
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://tiamac-frontend-react.onrender.com/',
+  'https://tiamac-frontend-react.onrender.com',
 ];
 
 const corsOptions = {
