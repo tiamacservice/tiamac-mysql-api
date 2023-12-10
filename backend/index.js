@@ -10,6 +10,7 @@ import ProductRoute from "./routes/ProductRoute.js";
 import DetailServisRoute from "./routes/DetailServisRoute.js";
 import AuthRoute from "./routes/AuthRoute.js";
 
+
 dotenv.config();
 
 const app = express();
@@ -36,11 +37,26 @@ app.use(
   })
 );
 
+
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://tiamac-frontend-react.onrender.com/',
+];
+
+const corsOptions = {
+  credentials: true,
+  origin: (origin, callback) => {
+    // Verifikasi jika origin yang melakukan permintaan termasuk dalam daftar origin yang diizinkan
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Origin tidak diizinkan oleh CORS'));
+    }
+  },
+};
+
 app.use(
-  cors({
-    credentials: true,
-    origin: "http://localhost:3000",
-  })
+  cors(corsOptions)
 );
 app.use(express.json());
 app.use(UserRoute);
