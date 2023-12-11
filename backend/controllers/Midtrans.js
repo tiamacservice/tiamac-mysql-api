@@ -5,8 +5,8 @@ export const webhok = async (req, res) => {
    
     let transactionStatus = req.body.transaction_status;
     let statusTransaction="";
-    if (transactionStatus == 'capture'){
-	    if (fraudStatus == 'accept'){
+        if (transactionStatus == 'capture'){
+	          if (transactionStatus == 'accept'){
                 statusTransaction="Proses Service";
                 // TODO set transaction status on your database to 'success'
                 // and response with 200 OK
@@ -33,22 +33,20 @@ export const webhok = async (req, res) => {
        
    
     
-        if(transactionStatus=='settlement'){
-            await Service.update(
-                { 
-                  status:statusTransaction
-                },
-                {
-                  where: {
-                    uuid: req.body.order_id,
-                  },
-                }
-              );
-        
-            return res
-            .status(200)
-            .json({ success:'Berhasil' });
-        }
+      await Service.update(
+          { 
+            status:statusTransaction
+          },
+          {
+            where: {
+              uuid: req.body.order_id,
+            },
+          }
+        );
+  
+      return res
+      .status(200)
+      .json({ success:'Berhasil' });
       
    
  
