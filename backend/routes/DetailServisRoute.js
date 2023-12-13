@@ -31,6 +31,9 @@ const router = express.Router();
 // detail servis
 router.get("/servis/", verifyUser, getServices);
 router.get("/servisbyid/:id", verifyUser, getServisId);
+
+router.get("/servisbyidUser/:id", verifyUser, getServisId);
+
 router.post("/servis", verifyCustomer, createServis);
 router.patch("/servis/:id", verifyUser, updateServis);
 router.delete("/servis/:id", verifyUser, deleteServis);

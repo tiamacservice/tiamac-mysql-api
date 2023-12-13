@@ -40,7 +40,7 @@ const ListMenungguPembayaranCust = () => {
     // checking environment mode
     snapScript.src =
       ENV === 'production'
-        ? 'https://app.midtrans.com/snap/snap.js'
+        ? 'https://app.sandbox.midtrans.com/snap/snap.js'
         : 'https://app.sandbox.midtrans.com/snap/snap.js';
 
     snapScript.type = 'text/javascript';

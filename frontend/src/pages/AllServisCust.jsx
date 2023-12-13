@@ -3,7 +3,7 @@ import Layout from "./LayoutCustomer";
 import ListAllServisCust from "../components/ListAllServisCust";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getMe } from "../features/authSlice";
+import { getMeCust } from "../features/authSlice";
 
 const AllServisCust = () => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const AllServisCust = () => {
   const { isError } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    dispatch(getMe());
+    dispatch(getMeCust());
   }, [dispatch]);
 
   //   useEffect(() => {
