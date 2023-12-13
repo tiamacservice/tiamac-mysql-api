@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 
+<<<<<<< HEAD
 
 // const db = new Sequelize(
 //   "tiamdb_rememberto",
@@ -16,4 +17,9 @@ const db = new Sequelize('tiam_db', 'root','',{
     host:"localhost",
     dialect:"mysql"
 
+=======
+const db = new Sequelize("tiamacse_tiamdb", "tiamacse_admin", "I#Gdcq)*9HOo", {
+  host: "tiamacservice.my.id",
+  dialect: "mysql",
+>>>>>>> f0ab35b35ad671cec68c51cf9c58de1d32b3dc68
 });
