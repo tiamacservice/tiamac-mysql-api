@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import logo from "../assets/logo-at.png";
+
+import "../assets/css/invoice.css";
 
 const DetailServis = () => {
   const [alamat, setAlamat] = useState("");
@@ -8,6 +11,7 @@ const DetailServis = () => {
   const [no_telp, setNoTelp] = useState("");
   const [name, setName] = useState("");
   const [dateServis, setDateServis] = useState("");
+  const [namaKar, setNamaKar] = useState("");
   const [email, setEmail] = useState("");
   const [ser1, setSer1] = useState("");
   const [ser2, setSer2] = useState("");
@@ -26,7 +30,7 @@ const DetailServis = () => {
     const getServisById = async () => {
       try {
         const response = await axios.get(
-          process.env.REACT_APP_API_KEY+`/servisbyid/${id}`
+          process.env.REACT_APP_API_KEY + `/servisbyid/${id}`
         );
         setSer1(response.data.ser1);
         setSer2(response.data.ser2);
@@ -43,6 +47,7 @@ const DetailServis = () => {
         setDateServis(response.data.dateServis);
         setEmail(response.data.customer.email);
         setTotalHarga(response.data.totalHarga);
+        setNamaKar(response.data.user.name);
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
@@ -53,71 +58,124 @@ const DetailServis = () => {
   }, [id]);
 
   return (
-    <div>
-      <h1 className="title">Detail Servis</h1>
-
-      <div className="card is-shadowless">
-        <div className="card-content">
-          <div class="columns">
-            <div class="column is-half">
-              <p>Nama Customer : {name}</p>
-              <p>No Telp/WA Customer : {no_telp}</p>
-              <p>Email Cust : {email}</p>
-            </div>
-            <div class="column">
-              <p>Tanggal Perbaikan : {dateServis}</p>
-              <p>Provinsi : {provinsi}</p>
-              <p>Alamat Servis : {alamat}</p>
-            </div>
+    <div className="container">
+      <div className="invoice box  ">
+        <div class="columns pb-0">
+          <div class="column is-one-quarter">
+            <img src={logo} width="130" height="28" alt="logo" />
           </div>
+          <div class="column">
+            <h1 className="head">AC TIAM</h1>
 
-          <table className="table is-bordered is-fullwidth">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Nama Layanan</th>
-                <th>Biaya</th>
-              </tr>
-            </thead>
+            <h2 className=" subhead">
+              LTC GLODOK, Lt. UG Blok B11 No.6 Jl.Hayam Wuruk No.127,
+            </h2>
+            <h2 className=" subhead">Jakarta Barat - 11180</h2>
+            <h2 className=" subhead">
+              Telp : +62 812-5653-4837 E-mail : ac.tiam2610@gmail.com
+            </h2>
+          </div>
+        </div>
 
+        <hr className="border" />
+        <div>
+          <table className="table is-fullwidth is-narrow">
+            <thead></thead>
             <tbody>
-              {ser1 !== "Tidak" && (
-                <tr>
-                  <td>1</td>
-                  <td>{ser1}</td>
-                  <td>{hrg1}</td>
-                </tr>
-              )}
-              {ser2 !== "Tidak" && (
-                <tr>
-                  <td>2</td>
-                  <td>{ser2}</td>
-                  <td>{hrg2}</td>
-                </tr>
-              )}
-              {ser3 !== "Tidak" && (
-                <tr>
-                  <td>3</td>
-                  <td>{ser3}</td>
-                  <td>{hrg3}</td>
-                </tr>
-              )}
-
-              {ser4 !== "Tidak" && (
-                <tr>
-                  <td>4</td>
-                  <td>{ser4}</td>
-                  <td>{hrg4}</td>
-                </tr>
-              )}
-
               <tr>
-                <td></td>
-                <td>Total Harga</td>
-                <td>{totalHarga}</td>
+                <th className="is-centered th top">Atas Nama</th>
+                <th className="is-centered th top">:</th>
+                <th className="is-centered th top">{name}</th>
+                <th className="is-centered th top">Alamat Servis </th>
+                <th className="is-centered th top">:</th>
+                <th className="is-centered th top">{alamat}</th>
+              </tr>
+              <tr>
+                <th className="is-centered th top">No Telp </th>
+                <th className="is-centered th top">:</th>
+                <th className="is-centered th top">{no_telp}</th>
+                <th className="is-centered th top">Provinsi</th>
+                <th className="is-centered th top">:</th>
+                <th className="is-centered th top">{provinsi}</th>
+              </tr>
+              <tr>
+                <th className="is-centered th top">Tanggal Perbaikan</th>
+                <th className="is-centered th top">:</th>
+                <th className="is-centered th top">{dateServis}</th>
+                <th className="is-centered th top">Nama Teknisi</th>
+                <th className="is-centered th top">:</th>
+                <th className="is-centered th top">{namaKar}</th>
+              </tr>
+              <tr>
+                <th className="is-centered th top">Alamat Servis</th>
+                <th className="is-centered th top">:</th>
+                <th className="is-centered th top">{alamat}</th>
               </tr>
             </tbody>
           </table>
+        </div>
+        <hr className="border" />
+        <table className="table is-bordered is-fullwidth">
+          <thead>
+            <tr>
+              <th className="">No</th>
+              <th className="">Nama Layanan</th>
+              <th className="">Biaya</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {ser1 !== "Tidak" && (
+              <tr>
+                <td className="bot">1</td>
+                <td className="bot">{ser1}</td>
+                <td className="bot">Rp.{hrg1}</td>
+              </tr>
+            )}
+            {ser2 !== "Tidak" && (
+              <tr>
+                <td className="bot">2</td>
+                <td className="bot">{ser2}</td>
+                <td className="bot">Rp.{hrg2}</td>
+              </tr>
+            )}
+            {ser3 !== "Tidak" && (
+              <tr>
+                <td className="bot">3</td>
+                <td className="bot">{ser3}</td>
+                <td className="bot">Rp.{hrg3}</td>
+              </tr>
+            )}
+
+            {ser4 !== "Tidak" && (
+              <tr>
+                <td className="bot">4</td>
+                <td className="bot">{ser4}</td>
+                <td className="bot">Rp.{hrg4}</td>
+              </tr>
+            )}
+
+            <tr>
+              <td colSpan="2" className="bot has-text-weight-bold">
+                Total Harga
+              </td>
+
+              <td className="bot has-text-weight-bold">Rp.{totalHarga}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="columns">
+        <div class="column is-half">
+          <div
+            onClick={() => navigate(-1)}
+            className="button is-fullwidth mx-6 is-warning"
+          >
+            Back
+          </div>
+        </div>
+        <div class="column">
+          <div className="button is-fullwidth mx-6 is-success">Download</div>
         </div>
       </div>
     </div>

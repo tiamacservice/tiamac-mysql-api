@@ -1,0 +1,88 @@
+:root {
+  --brandColor: hsl(181, 86%, 62%);
+  --background: rgb(200, 239, 242);
+  --textDark: hsla(0, 0%, 0%, 0.66);
+  --textLight: hsla(0, 0%, 0%, 0.33);
+
+  ::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #efefef;
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d5d5d5;
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c4c4c4;
+  }
+}
+
+.body {
+  background: #f3f1f1;
+}
+
+.home {
+  background: #f3f1f1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.home .features {
+  padding: 2rem 0;
+}
+.home .box.cta {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+}
+
+.home .card-image .gambar {
+  font-size: 8rem;
+  padding-top: 2rem;
+  height: 40vh;
+}
+.home .card-content .content {
+  font-size: 14px;
+  margin: 1rem 1rem;
+}
+.home .card-content .content h4 {
+  font-size: 16px;
+  font-weight: 700;
+}
+.home .card {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  margin-bottom: 2rem;
+}
+.home .intro {
+  padding-top: 3rem;
+  text-align: center;
+}
+.home .sandbox {
+  padding: 5rem 0;
+}
+.home .tile.notification {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.home .is-shady {
+  animation: flyintoright 0.4s backwards;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 1px 0;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 10px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+.home .is-shady:hover {
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.13), 0 6px 6px rgba(0, 0, 0, 0.19);
+}
+
+.footer {
+  background-color: rgb(255, 0, 60);
+}

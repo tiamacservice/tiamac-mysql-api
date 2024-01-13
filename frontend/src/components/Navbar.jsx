@@ -9,10 +9,15 @@ export const Navbar = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const logout = () => {
     dispatch(LogOut());
     dispatch(reset());
     navigate("/");
+    refreshPage();
   };
 
   return (

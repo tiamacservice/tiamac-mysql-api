@@ -1,0 +1,59 @@
+.invoice {
+  margin-top: 50px !important;
+  margin-left: 300px !important;
+  margin-right: 300px !important;
+  padding-top: 30px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  padding-bottom: 50px !important;
+  border-style: ridge;
+  font-family: sans-serif;
+}
+
+.invoice .head {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.invoice .subhead {
+  font-size: 15px;
+}
+
+.invoice .th {
+  border: none !important;
+  font-weight: normal;
+}
+
+.invoice .top {
+  font-size: 14px;
+}
+
+.invoice .bot {
+  font-size: 14px;
+}
+
+.verticalLine {
+  border-left: thick solid #ff0000;
+}
+.invoice .border {
+  border: none;
+  height: 1px;
+  color: #333;
+  background-color: #333;
+}
+
+.invoice .right {
+  text-align: right !important;
+}
+.invoice .gajibersih {
+  background-color: #cbcaca;
+  border-style: solid;
+}
+
+.invoice .totalab {
+  border-top: 5px solid black;
+}
+
+.invoice .ttd {
+  background-color: #ff0000;
+}

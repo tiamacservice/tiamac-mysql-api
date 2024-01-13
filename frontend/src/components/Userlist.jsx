@@ -10,19 +10,20 @@ const Userlist = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get(process.env.REACT_APP_API_KEY+`/users`);
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/users`);
     setUsers(response.data);
   };
 
   const deleteUsers = async (userId) => {
-    await axios.delete(process.env.REACT_APP_API_KEY+`/users/${userId}`);
+    await axios.delete(process.env.REACT_APP_API_KEY + `/users/${userId}`);
     getUsers();
   };
 
   return (
     <div>
-      <h1 className="title">Users</h1>
-      <h2 className="subtitle">List of User</h2>
+      <h1 className="title">Staff</h1>
+      <h2 className="subtitle">List semua staff</h2>
+
       <Link to="/users/add" className="button is-primary mb-2">
         Add New
       </Link>

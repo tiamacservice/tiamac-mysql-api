@@ -21,7 +21,7 @@ const NewPesanan = () => {
     e.preventDefault();
 
     try {
-      await axios.post(process.env.REACT_APP_API_KEY+`/newservis`, {
+      await axios.post(process.env.REACT_APP_API_KEY + `/newservis`, {
         ser1: ser1,
         ser2: ser2,
         ser3: ser3,
@@ -85,7 +85,10 @@ const NewPesanan = () => {
                   <div className="select is-fullwidth">
                     <select
                       value={hrg1}
-                      onChange={(e) => setHrg1(e.target.value, 10)}
+                      onChange={(e) => {
+                        setHrg1(e.target.value, 10);
+                        setSer1("Cuci AC");
+                      }}
                     >
                       <option value={0}>Tidak</option>
                       <option value={50000}>Cuci AC 0.5 - 1 PK Rp50.000</option>

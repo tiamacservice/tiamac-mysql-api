@@ -13,7 +13,7 @@ const FormEditProduct = () => {
     const getProductsById = async () => {
       try {
         const response = await axios.get(
-          process.env.REACT_APP_API_KEY+`/products/${id}`
+          process.env.REACT_APP_API_KEY + `/products/${id}`
         );
         setName(response.data.name);
         setPrice(response.data.price);
@@ -29,7 +29,7 @@ const FormEditProduct = () => {
   const updateProduct = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(process.env.REACT_APP_API_KEY+`/products/${id}`, {
+      await axios.patch(process.env.REACT_APP_API_KEY + `/products/${id}`, {
         name: name,
         price: price,
       });
@@ -42,7 +42,7 @@ const FormEditProduct = () => {
   };
 
   return (
-    <div>
+    <section>
       <h1 className="title">Products</h1>
       <h2 className="subtitle">Edit Products</h2>
       <div className="card is-shadowless">
@@ -85,7 +85,7 @@ const FormEditProduct = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

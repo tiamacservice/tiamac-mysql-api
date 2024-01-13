@@ -10,22 +10,24 @@ const Customerlist = () => {
   }, []);
 
   const getCustomers = async () => {
-    const response = await axios.get(process.env.REACT_APP_API_KEY+"/customers");
+    const response = await axios.get(
+      process.env.REACT_APP_API_KEY + "/customers"
+    );
     setCustomers(response.data);
   };
 
   const deleteUsers = async (customerId) => {
-    await axios.delete(process.env.REACT_APP_API_KEY+`/customers/${customerId}`);
+    await axios.delete(
+      process.env.REACT_APP_API_KEY + `/customers/${customerId}`
+    );
     getCustomers();
   };
 
   return (
     <div>
-      <h1 className="title">Users</h1>
-      <h2 className="subtitle">List of User</h2>
-      <Link to="/users/add" className="button is-primary mb-2">
-        Add New
-      </Link>
+      <h1 className="title">Customer</h1>
+      <h2 className="subtitle">List semua customer</h2>
+
       <table className="table is-striped is-fullwidth">
         <thead>
           <tr>

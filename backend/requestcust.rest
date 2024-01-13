@@ -1,4 +1,4 @@
-POST http://localhost:5000/customers
+POST http://localhost:5001/customers
 Content-Type: application/json
 
 {
@@ -13,35 +13,35 @@ Content-Type: application/json
 }
 ###
 ///melihat semua customer
-GET http://localhost:5000/customers
+GET http://localhost:5001/customers
 
 ###
 //Login Customer
-POST http://localhost:5000/logincust
+POST http://localhost:5001/logincust
 Content-Type: application/json
 
 {
 
-    "email" : "budi@gmail.com",
-    "password": "123456"
+    "email" : "cust2@gmail.com",
+    "password": "112233"
 
 }
 
 ###
 //Delete User
-DELETE  http://localhost:5000/customers/07d03f5b-6bcb-46bc-b85e-95bb8be58666
+DELETE  http://localhost:5001/customers/07d03f5b-6bcb-46bc-b85e-95bb8be58666
 
 ###
 //Me (Session)
-GET http://localhost:5000/mecust
+GET http://localhost:5001/mecust
 
 ###
 //Logout
-DELETE http://localhost:5000/Logout
+DELETE http://localhost:5001/Logout
 
 ###
 //create new booking servis
-POST http://localhost:5000/newservis
+POST http://localhost:5001/newservis
 Content-Type: application/json
 
 {
@@ -54,12 +54,12 @@ Content-Type: application/json
     "hrg1" : 200000,
     "hrg2" : 300000,
     "hrg3" : 400000,
-    "hrg4" : 500000
+    "hrg4" : 500100
 }
 
 ###
 //create new booking servis
-POST http://localhost:5000/servis
+POST http://localhost:5001/servis
 Content-Type: application/json
 
 {

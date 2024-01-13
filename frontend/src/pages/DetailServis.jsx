@@ -14,17 +14,13 @@ const DetailServis = () => {
     dispatch(getMe());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (isError) {
-      navigate("/");
-    }
-  }, [isError, navigate]);
+  // useEffect(() => {
+  //   if (isError) {
+  //     navigate("/");
+  //   }
+  // }, [isError, navigate]);
 
-  return (
-    <Layout>
-      <DetailServ />
-    </Layout>
-  );
+  return <DetailServ />;
 };
 
 export default DetailServis;

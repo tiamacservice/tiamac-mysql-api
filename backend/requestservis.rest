@@ -1,6 +1,6 @@
 ###
 //create new booking servis
-POST http://localhost:5000/newservis
+POST http://localhost:5001/newservis
 Content-Type: application/json
 
 {
@@ -13,12 +13,12 @@ Content-Type: application/json
     "hrg1" : 200000,
     "hrg2" : 300000,
     "hrg3" : 400000,
-    "hrg4" : 500000
+    "hrg4" : 500100
 }
 
 ###
 //Login Customer
-POST http://localhost:5000/logincust
+POST https://node.tiamacservice.my.id/logincust
 Content-Type: application/json
 
 {
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 ###
 //Login User
-POST http://localhost:5000/login
+POST http://localhost:5001/login
 Content-Type: application/json
 
 {
@@ -42,15 +42,15 @@ Content-Type: application/json
 
 ###
 //Me (Session)
-GET http://localhost:5000/me
+GET http://localhost:5001/me
 
 ###
 //Logout
-DELETE http://localhost:5000/Logout
+DELETE http://localhost:5001/Logout
 
 ###
 //Login Admin
-POST http://localhost:5000/login
+POST http://localhost:5001/login
 Content-Type: application/json
 
 {
@@ -62,16 +62,16 @@ Content-Type: application/json
 
 ###
 //Get All Servis
-GET http://localhost:5000/servis
+GET http://localhost:5001/servis
 
 ###
 //Get All Servis
-GET http://localhost:5000/custservis
+GET http://localhost:5001/custservis
 
 
 ###
 //Updet Servis
-PATCH http://localhost:5000/penjadwalanservis/c753ba94-81a0-4fb9-ac08-f01def5656e1
+PATCH http://localhost:5001/penjadwalanservis/c753ba94-81a0-4fb9-ac08-f01def5656e1
 Content-Type: application/json
 
 {
@@ -82,17 +82,17 @@ Content-Type: application/json
 
 ###
 //Get spesific Servis
-GET http://localhost:5000/allpenjadwalan
+GET http://localhost:5001/allpenjadwalan
 
 ###
 //get single servis
 
-GET http://localhost:5000/servisbyid/182f2ecb-5e0d-483d-af62-0648db7dee14
+GET http://localhost:5001/servisbyid/182f2ecb-5e0d-483d-af62-0648db7dee14
 
 
 ###
 //Konfirmasi Teknisi
-PATCH http://localhost:5000/formkonfirmasiteknisi/3d48ae47-bb23-4ea6-adf4-29178852d536
+PATCH http://localhost:5001/formkonfirmasiteknisi/3d48ae47-bb23-4ea6-adf4-29178852d536
 Content-Type: application/json
 
 {

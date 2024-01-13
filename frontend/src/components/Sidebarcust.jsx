@@ -25,28 +25,23 @@ const Sidebarcust = () => {
               <IoHome /> Dashboard
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to={"/dashboardcust"}>
               <IoPricetag /> Products
             </NavLink>
-          </li>
+          </li> */}
         </ul>
         <div>
-          <p className="menu-label">Pesanan</p>
+          <p className="menu-label">List Servis</p>
           <ul className="menu-list">
             <li>
               <NavLink to={"/allserviscust"}>
-                <IoPerson /> Semua Pesanan
+                <IoPerson /> Semua Layanan
               </NavLink>
             </li>
             <li>
               <NavLink to={"/menunggupembayarancust"}>
                 <IoPerson /> Menunggu Pembayaran
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={"/konfirmasicustomercust"}>
-                <IoPerson /> Konfirmasi
               </NavLink>
             </li>
             <li>

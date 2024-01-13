@@ -1,0 +1,21 @@
+.contact {
+  padding-top: 10px;
+  padding-left: 100px;
+  padding-right: 50px;
+}
+
+.contact .is-fullheight {
+  min-height: calc(100vh - 6.5rem - 40px);
+}
+
+.contact .social-media {
+  margin-top: 30px;
+}
+
+.contact .social-media a {
+  margin-right: 10px;
+}
+
+.contact .field:not(:last-child) {
+  margin-bottom: 20px;
+}

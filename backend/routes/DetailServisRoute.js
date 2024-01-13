@@ -30,7 +30,7 @@ const router = express.Router();
 
 // detail servis
 router.get("/servis/", verifyUser, getServices);
-router.get("/servisbyid/:id", verifyUser, getServisId);
+router.get("/servisbyid/:id", getServisId);
 
 router.get("/servisbyidUser/:id", verifyUser, getServisId);
 

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import "../assets/css/konfirmasi.css";
 
 const FormEditProduct = () => {
   const [alamat, setAlamat] = useState("");
   const [provinsi, setProvinsi] = useState("");
   const [no_telp, setNoTelp] = useState("");
+  const [namaKar, setNamaKaryawan] = useState("");
   const [name, setName] = useState("");
   const [dateServis, setDateServis] = useState("");
   const [ser1, setSer1] = useState("");
@@ -25,7 +27,7 @@ const FormEditProduct = () => {
     const getServisById = async () => {
       try {
         const response = await axios.get(
-          process.env.REACT_APP_API_KEY+`/servisbyid/${id}`
+          process.env.REACT_APP_API_KEY + `/servisbyid/${id}`
         );
         setSer1(response.data.ser1);
         setSer2(response.data.ser2);
@@ -41,6 +43,7 @@ const FormEditProduct = () => {
         setName(response.data.customer.name);
         setDateServis(response.data.dateServis);
         setTotalHarga(response.data.totalHarga);
+        setNamaKaryawan(response.data.user.name);
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
@@ -53,18 +56,21 @@ const FormEditProduct = () => {
   const konfirmasiTeknisi = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(process.env.REACT_APP_API_KEY+`/formkonfirmasiteknisi/${id}`, {
-        ser1: ser1,
-        ser2: ser2,
-        ser3: ser3,
-        ser4: ser4,
-        hrg1: hrg1,
-        hrg2: hrg2,
-        hrg3: hrg3,
-        hrg4: hrg4,
-        status: "Menunggu Pembayaran",
-        totalHarga: hrg1 + hrg2 + hrg3 + hrg4,
-      });
+      await axios.patch(
+        process.env.REACT_APP_API_KEY + `/formkonfirmasiteknisi/${id}`,
+        {
+          ser1: ser1,
+          ser2: ser2,
+          ser3: ser3,
+          ser4: ser4,
+          hrg1: hrg1,
+          hrg2: hrg2,
+          hrg3: hrg3,
+          hrg4: hrg4,
+          status: "Menunggu Pembayaran",
+          totalHarga: hrg1 + hrg2 + hrg3 + hrg4,
+        }
+      );
       navigate("/dashboard");
     } catch (error) {
       if (error.response) {
@@ -74,18 +80,61 @@ const FormEditProduct = () => {
   };
 
   return (
-    <div>
-      <h1 className="title">Products</h1>
-      <h2 className="subtitle">Edit Products</h2>
+    <div className="">
+      <h1 className="title">Konfirmasi Servis</h1>
+      <h2 className="subtitle">
+        Menyesuaikan layanan yang dipesan dengan keadaan kerusakan AC customer
+      </h2>
 
-      <div className="card is-shadowless">
+      <div className="card is-shadowless konfirmasi">
         <div className="card-content">
+          <hr className="border" />
+          <div className="columns">
+            <div className="column is-half pr-6">
+              <table className="table ">
+                <tbody>
+                  <tr>
+                    <th className="is-centered th">Nama Customer</th>
+                    <th className="is-centered	 th">:</th>
+                    <th className="is-centered	 th">{name}</th>
+                  </tr>
+                  <tr>
+                    <th className="is-centered th">No Telp Customer</th>
+                    <th className="is-centered	 th">:</th>
+                    <th className="is-centered 	th">{no_telp}</th>
+                  </tr>
+                  <tr>
+                    <th className="is-centered th">Tanggal Perbaikan</th>
+                    <th className="is-centered th">:</th>
+                    <th className="is-centered th">{dateServis}</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="column pr-5">
+              <table className="table">
+                <tbody>
+                  <tr>
+                    <th className="is-centered th">Alamat Servis</th>
+                    <th className="is-centered	th">:</th>
+                    <th className="is-centered	th">{alamat}</th>
+                  </tr>
+                  <tr>
+                    <th className="is-centered th">Provinsi</th>
+                    <th className="is-centered	th">:</th>
+                    <th className="is-centered	th">{provinsi}</th>
+                  </tr>
+                  <tr>
+                    <th className="is-centered th">Nama Teknisi</th>
+                    <th className="is-centered	th">:</th>
+                    <th className="is-centered	th">{namaKar}</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <hr className="border" />
           <div className="content">
-            <p>Nama Customer : {name}</p>
-            <p>No Telp/WA Customer : {no_telp}</p>
-            <p>Tanggal Perbaikan : {dateServis}</p>
-            <p>Provinsi : {provinsi}</p>
-            <p>Alamat Servis : {alamat}</p>
             <form onSubmit={konfirmasiTeknisi}>
               <p className="has-text-center">{msg}</p>
 

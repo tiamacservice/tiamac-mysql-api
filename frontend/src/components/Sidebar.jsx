@@ -25,39 +25,39 @@ const Sidebar = () => {
               <IoHome /> Dashboard
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to={"/products"}>
               <IoPricetag /> Products
             </NavLink>
-          </li>
+          </li> */}
         </ul>
         {user && user.role === "admin" && (
           <div>
-            <p className="menu-label">Admin</p>
+            <p className="menu-label mt-3">Admin</p>
             <ul className="menu-list">
               <li>
                 <NavLink to={"/users"}>
-                  <IoPerson /> Users
+                  <IoPerson /> List Staff
                 </NavLink>
               </li>
               <li>
                 <NavLink to={"/customers"}>
-                  <IoPerson /> Customer
+                  <IoPerson /> List Customer
                 </NavLink>
               </li>
             </ul>
-            <p className="menu-label">Servis</p>
+            <p className="menu-label">List Servis</p>
             <ul className="menu-list">
               <li>
                 <NavLink to={"/allservis"}>
                   <IoPerson /> Semua Pesanan
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink to={"/dashboard"}>
                   <IoPerson /> Dalam Proses
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink to={"/listservispenjadwalan"}>
                   <IoPerson /> Menunggu Jadwal
@@ -78,11 +78,11 @@ const Sidebar = () => {
                   <IoPerson /> Proses Servis
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink to={"/allkonfirmasicustomer"}>
                   <IoPerson /> Konfirmasi Customer
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink to={"/allservisselesai"}>
                   <IoPerson /> Selesai
@@ -94,18 +94,18 @@ const Sidebar = () => {
 
         {user && user.role === "karyawan" && (
           <div>
-            <p className="menu-label">Servis</p>
+            <p className="menu-label mt-5">List Servis</p>
             <ul className="menu-list">
               <li>
                 <NavLink to={"/allservis"}>
                   <IoPerson /> Semua Pesanan
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink to={"/dashboard"}>
                   <IoPerson /> Dalam Proses
                 </NavLink>
-              </li>
+              </li> */}
 
               <li>
                 <NavLink to={"/allkonfirmasiteknisi"}>
@@ -125,15 +125,6 @@ const Sidebar = () => {
             </ul>
           </div>
         )}
-
-        <p className="menu-label">Settings</p>
-        <ul className="menu-list">
-          <li>
-            <button onClick={logout} className="button is-white">
-              <IoLogOut /> Logout
-            </button>
-          </li>
-        </ul>
       </aside>
     </div>
   );

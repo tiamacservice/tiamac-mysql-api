@@ -5,15 +5,17 @@ import { useNavigate, useParams } from "react-router-dom";
 const FormPenjadwalan = () => {
   const [dateServis, setdateServis] = useState("");
   const [userId, setUserId] = useState("");
+  const [listKaryawan, setListKaryawan] = useState([]);
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
+    getAllKaryawan();
     const getServisById = async () => {
       try {
         const response = await axios.get(
-          process.env.REACT_APP_API_KEY+`/servisbyid/${id}`
+          process.env.REACT_APP_API_KEY + `/servisbyid/${id}`
         );
         setdateServis(response.data.dateServis);
         setUserId(response.data.userId);
@@ -26,15 +28,25 @@ const FormPenjadwalan = () => {
     getServisById();
   }, [id]);
 
+  const getAllKaryawan = async () => {
+    const response = await axios.get(
+      process.env.REACT_APP_API_KEY + "/allkaryawan"
+    );
+    setListKaryawan(response.data);
+  };
+
   const PenjadwalanServis = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(process.env.REACT_APP_API_KEY+`/penjadwalanservis/${id}`, {
-        status: "Konfirmasi Teknisi",
-        dateServis: dateServis,
-        userId: userId,
-      });
-      navigate("/listpesanan");
+      await axios.patch(
+        process.env.REACT_APP_API_KEY + `/penjadwalanservis/${id}`,
+        {
+          status: "Konfirmasi Teknisi",
+          dateServis: dateServis,
+          userId: userId,
+        }
+      );
+      navigate("/dashboard");
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -62,16 +74,26 @@ const FormPenjadwalan = () => {
                   />
                 </div>
               </div>
+
               <div className="field">
-                <label className="label">Teknisi</label>
-                <div className="control">
-                  <input
-                    type="text"
-                    className="input"
-                    value={userId}
-                    onChange={(e) => setUserId(e.target.value)}
-                    placeholder="UserId"
-                  />
+                <div className="field">
+                  <label className="label">Pilih Teknisi</label>
+                  <div className="p"></div>
+                  <div className="control">
+                    <div className="select is-fullwidth">
+                      <select
+                        value={userId}
+                        onChange={(e) => setUserId(e.target.value)}
+                      >
+                        <option value="">Pilih Karyawan</option>
+                        {listKaryawan.map((karya) => (
+                          <option value={karya.id}>
+                            {karya.name} - {karya.email} - id:{karya.id}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="field">

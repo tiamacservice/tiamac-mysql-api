@@ -11,6 +11,20 @@ export const getUsers = async (req, res) => {
   }
 };
 
+export const getAllKaryawan = async (req, res) => {
+  try {
+    const response = await User.findAll({
+      attributes: ["uuid", "name", "role", "email", "id"],
+      where: {
+        role: "karyawan",
+      },
+    });
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+};
+
 export const getUserById = async (req, res) => {
   try {
     const response = await User.findOne({

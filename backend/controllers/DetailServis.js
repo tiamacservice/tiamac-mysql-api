@@ -3,14 +3,13 @@ import Customer from "../models/CustomerModel.js";
 import User from "../models/UserModel.js";
 import { Op } from "sequelize";
 
-
 import midtransClient from "midtrans-client";
 
 // get servis
 
 export const snap = new midtransClient.Snap({
   isProduction: false, // Ganti ke true jika sudah produksi
-  serverKey: 'SB-Mid-server-fF93jgqGf3K3tpUumtK1BFFV', // Ganti dengan kunci server Midtrans Anda
+  serverKey: "SB-Mid-server-fF93jgqGf3K3tpUumtK1BFFV", // Ganti dengan kunci server Midtrans Anda
 });
 
 // get servis
@@ -96,34 +95,34 @@ export const getTokenPayment = async (req, res) => {
     },
   });
   const orderId = servis.uuid; // Buat orderId unik
-  
+
   // const transactionDetails = {
   //   orderId:servis.uuid,
   //   grossAmount: 200000, // Ganti dengan jumlah pembayaran yang diinginkan
   // };
 
   let parameter = {
-    "transaction_details": {
-        "order_id": orderId,
-        "gross_amount": servis.totalHarga
+    transaction_details: {
+      order_id: orderId,
+      gross_amount: servis.totalHarga,
     },
-    "credit_card":{
-        "secure" : true
+    credit_card: {
+      secure: true,
     },
-    "customer_details": {
-        "first_name": "budi",
-        "last_name": "pratama",
-        "email": "budi.pra@example.com",
-        "phone": "08111222333"
-    }
-};
+    customer_details: {
+      first_name: "budi",
+      last_name: "pratama",
+      email: "budi.pra@example.com",
+      phone: "08111222333",
+    },
+  };
 
-// snap.createTransaction(parameter)
-// .then((transaction)=>{
-//     // transaction token
-//     let transactionToken = transaction.token;
-//     console.log('transactionToken:',transactionToken);
-// })
+  // snap.createTransaction(parameter)
+  // .then((transaction)=>{
+  //     // transaction token
+  //     let transactionToken = transaction.token;
+  //     console.log('transactionToken:',transactionToken);
+  // })
 
   try {
     const tokenResponse = await snap.createTransaction(parameter);
@@ -131,10 +130,10 @@ export const getTokenPayment = async (req, res) => {
 
     res.json({ token: tokenResponse.token });
   } catch (error) {
-    console.error('Error creating transaction token:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Error creating transaction token:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
-}
+};
 
 export const getServisId = async (req, res) => {
   try {
@@ -145,63 +144,73 @@ export const getServisId = async (req, res) => {
     });
     if (!servis) return res.status(404).json({ msg: "Data tidak ditemukan" });
     let response;
-    if (req.role === "admin") {
-      response = await Servis.findOne({
-        attributes: [
-          "uuid",
-          "status",
-          "alamat",
-          "provinsi",
-          "dateServis",
-          "ser1",
-          "ser2",
-          "ser3",
-          "ser4",
-          "hrg1",
-          "hrg2",
-          "hrg3",
-          "hrg4",
-          "totalHarga",
-        ],
-        where: {
-          id: servis.id,
+    // if (req.role === "admin") {
+    response = await Servis.findOne({
+      attributes: [
+        "uuid",
+        "status",
+        "alamat",
+        "provinsi",
+        "dateServis",
+        "ser1",
+        "ser2",
+        "ser3",
+        "ser4",
+        "hrg1",
+        "hrg2",
+        "hrg3",
+        "hrg4",
+        "totalHarga",
+      ],
+      where: {
+        id: servis.id,
+      },
+      include: [
+        {
+          model: User,
+          attributes: ["role", "email", "id", "name"],
         },
-        include: [
-          {
-            model: Customer,
-            attributes: ["name", "email", "no_telp"],
-          },
-        ],
-      });
-    } else {
-      response = await Servis.findOne({
-        attributes: [
-          "uuid",
-          "status",
-          "alamat",
-          "provinsi",
-          "dateServis",
-          "ser1",
-          "ser2",
-          "ser3",
-          "ser4",
-          "hrg1",
-          "hrg2",
-          "hrg3",
-          "hrg4",
-          "totalHarga",
-        ],
-        where: {
-          [Op.and]: [{ id: servis.id }, { userId: req.userId }],
+        {
+          model: Customer,
+          attributes: ["name", "email", "no_telp"],
         },
-        include: [
-          {
-            model: Customer,
-            attributes: ["name", "email", "no_telp"],
-          },
-        ],
-      });
-    }
+      ],
+      // include: [
+      //   {
+      //     model: User,
+      //     attributes: ["role", "email", "id", "name"],
+      //   },
+      // ],
+    });
+    // } else {
+    //   response = await Servis.findOne({
+    //     attributes: [
+    //       "uuid",
+    //       "status",
+    //       "alamat",
+    //       "provinsi",
+    //       "dateServis",
+    //       "ser1",
+    //       "ser2",
+    //       "ser3",
+    //       "ser4",
+    //       "hrg1",
+    //       "hrg2",
+    //       "hrg3",
+    //       "hrg4",
+    //       "totalHarga",
+    //     ],
+    //     where: {
+    //       [Op.and]: [{ id: servis.id }, { userId: req.userId }],
+    //     },
+    //     include: [
+    //       {
+    //         model: Customer,
+    //         attributes: ["name", "email", "no_telp"],
+    //       },
+    //     ],
+    //   });
+    // }
     res.status(200).json(response);
   } catch (error) {
     res.status(500).json({ msg: error.message });
@@ -290,7 +299,8 @@ export const newservis = async (req, res) => {
       hrg2: hrg2,
       hrg3: hrg3,
       hrg4: hrg4,
-      totalHarga: parseInt(hrg1)  + parseInt(hrg2) + parseInt(hrg3) + parseInt(hrg4),
+      totalHarga:
+        parseInt(hrg1) + parseInt(hrg2) + parseInt(hrg3) + parseInt(hrg4),
       provinsi: provinsi,
       alamat: alamat,
 

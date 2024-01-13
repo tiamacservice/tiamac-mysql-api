@@ -1,0 +1,157 @@
+/* Login Customer */
+
+.logincust {
+  background: var(--background);
+  height: 100vh;
+  color: var(--textDark);
+}
+
+.logincust .field:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.logincust .register {
+  margin-top: 10rem;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.logincust .left {
+  border-right: 5px solid var(--background);
+}
+
+.logincust .left .title {
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.logincust .left .colored {
+  color: var(--brandColor);
+  font-weight: 500;
+  margin-top: 1rem !important;
+  letter-spacing: -1px;
+}
+
+.logincust .left p {
+  color: var(--textLight);
+  font-size: 1.15rem;
+}
+
+.logincust .right .title {
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.logincust .right .description {
+  margin-top: 1rem;
+  margin-bottom: 1rem !important;
+  color: var(--textLight);
+  font-size: 1.15rem;
+}
+
+.logincust .right small {
+  color: var(--textLight);
+}
+
+input {
+  font-size: 1rem;
+}
+
+input:focus {
+  border-color: var(--brandColor) !important;
+  box-shadow: 0 0 0 1px var(--brandColor) !important;
+}
+
+.logincust .fab,
+.logincust .fas {
+  color: var(--textLight);
+  margin-right: 1rem;
+}
+
+/* Login staff */
+
+.loginstaff {
+  background: var(--background);
+  height: 100vh;
+  color: var(--textDark);
+}
+
+.loginstaff .field:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.loginstaff .register {
+  margin-top: 10rem;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.loginstaff .left {
+  border-right: 5px solid var(--background);
+}
+
+.loginstaff .left .title {
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.loginstaff .left .colored {
+  color: var(--brandColor);
+  font-weight: 500;
+  margin-top: 1rem !important;
+  letter-spacing: -1px;
+}
+
+.loginstaff .left p {
+  color: var(--textLight);
+  font-size: 1.15rem;
+}
+
+.loginstaff .right .title {
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.loginstaff .right .description {
+  margin-top: 1rem;
+  margin-bottom: 1rem !important;
+  color: var(--textLight);
+  font-size: 1.15rem;
+}
+
+.loginstaff .right small {
+  color: var(--textLight);
+}
+
+input {
+  font-size: 1rem;
+}
+
+input:focus {
+  border-color: var(--brandColor) !important;
+  box-shadow: 0 0 0 1px var(--brandColor) !important;
+}
+
+.loginstaff .fab,
+.loginstaff .fas {
+  color: var(--textLight);
+  margin-right: 1rem;
+}
+
+/* Form Register */
+
+.va {
+  display: flex;
+  align-items: center;
+}
+
+.FormRegis {
+  background: var(--background);
+  color: var(--textDark);
+}
+
+.FormRegis .container {
+  background: white;
+  margin-left: 70px;
+  margin-right: 70px;
+}

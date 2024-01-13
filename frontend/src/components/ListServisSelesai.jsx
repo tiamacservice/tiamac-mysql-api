@@ -10,22 +10,24 @@ const ListServisSelesai = () => {
   }, []);
 
   const getServis = async () => {
-    const response = await axios.get(process.env.REACT_APP_API_KEY+`/allservisselesai`);
+    const response = await axios.get(
+      process.env.REACT_APP_API_KEY + `/allservisselesai`
+    );
     setServis(response.data);
   };
 
   const deleteServis = async (ServisId) => {
-    await axios.delete(process.env.REACT_APP_API_KEY+`/servis/${ServisId}`);
+    await axios.delete(process.env.REACT_APP_API_KEY + `/servis/${ServisId}`);
     getServis();
   };
 
   return (
     <div>
-      <h1 className="title">Products</h1>
-      <h2 className="subtitle">List of Products</h2>
-      <Link to="/products/add" className="button is-primary mb-2">
-        Add New
-      </Link>
+      <h1 className="title py-1">Servis Selesai</h1>
+      <h2 className="subtitle mb-6">
+        Pemesanan layanan servis yang sudah selesai
+      </h2>
+
       <table className="table is-striped is-fullwidth">
         <thead>
           <tr>

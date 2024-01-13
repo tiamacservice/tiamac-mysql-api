@@ -29,16 +29,27 @@ const Profilcust = () => {
   return (
     <div>
       <Navbar />
-      <h1 className="title">Dashboard</h1>
-      <h2 className="subtitle">
-        Welcome Back... <strong>{customer && customer.name} </strong>
-      </h2>
-      <h2 className="subtitle">
-        No: Telp: <strong>{customer && customer.no_telp} </strong>
-      </h2>
-      <h2 className="subtitle">
-        Email: <strong>{customer && customer.email} </strong>
-      </h2>
+      <section className="hero is-fullheight contact">
+        <div className="hero-body">
+          <div className="box">
+            <h1 className="title is-1 has-text-black-bis ">Profile Cust</h1>
+            <p className="is-size-4">
+              Nama : <strong>{customer && customer.name} </strong>
+            </p>
+            <p className="is-size-4">
+              Email: <strong>{customer && customer.email} </strong>
+            </p>
+            <p className="is-size-4">
+              Nomor Telp : <strong>{customer && customer.no_telp} </strong>
+            </p>
+            <p className="is-size-4">
+              Alamat : <strong>{customer && customer.alamat}</strong> provinsi{" "}
+              <strong>{customer && customer.provinsi}</strong>
+            </p>
+            <button class="button is-link">Edit</button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
