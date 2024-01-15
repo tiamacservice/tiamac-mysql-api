@@ -78,4 +78,5 @@ Servis.belongsTo(Users, { foreignKey: "userId" });
 Customers.hasMany(Servis);
 Servis.belongsTo(Customers, { foreignKey: "customerId" });
 
+
 export default Servis;

@@ -87,7 +87,8 @@ const NewPesanan = () => {
                       value={hrg1}
                       onChange={(e) => {
                         setHrg1(e.target.value, 10);
-                        setSer1("Cuci AC");
+                        setSer1(e.target.options[e.target.selectedIndex].text);
+                        console.log(e.target)
                       }}
                     >
                       <option value={0}>Tidak</option>
@@ -103,7 +104,14 @@ const NewPesanan = () => {
                   <div className="select is-fullwidth">
                     <select
                       value={hrg2}
-                      onChange={(e) => setHrg2(e.target.value, 10)}
+                      onChange={
+                        (e) => {
+                          setHrg2(e.target.value, 10)
+                          setSer2(e.target.options[e.target.selectedIndex].text);
+                        }
+                       
+                      
+                      }
                     >
                       <option value={0}>Tidak</option>
                       <option value={100000}>Bongkar AC Rp100.000</option>
@@ -132,7 +140,10 @@ const NewPesanan = () => {
                   <div className="select is-fullwidth">
                     <select
                       value={hrg3}
-                      onChange={(e) => setHrg3(e.target.value, 10)}
+                      onChange={(e) => {
+                        setHrg3(e.target.value, 10)
+                        setSer3(e.target.options[e.target.selectedIndex].text);
+                      }}
                     >
                       <option value={0}>Tidak</option>
                       <option value={250000}>

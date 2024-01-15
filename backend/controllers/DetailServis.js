@@ -93,6 +93,16 @@ export const getTokenPayment = async (req, res) => {
     where: {
       uuid: req.params.id,
     },
+    include: [
+      {
+        model: User,
+        attributes: ["role", "email", "id", "name"],
+      },
+      {
+        model: Customer,
+        attributes: ["name", "email", "no_telp"],
+      },
+    ],
   });
   const orderId = servis.uuid; // Buat orderId unik
 
@@ -110,10 +120,10 @@ export const getTokenPayment = async (req, res) => {
       secure: true,
     },
     customer_details: {
-      first_name: "budi",
-      last_name: "pratama",
-      email: "budi.pra@example.com",
-      phone: "08111222333",
+      first_name: servis.customer.name,
+      last_name: servis.customer.name,
+      email: servis.customer.email,
+      phone: servis.customer.no_telp
     },
   };
 
