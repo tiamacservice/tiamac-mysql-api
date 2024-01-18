@@ -80,14 +80,14 @@ const FormEditProduct = () => {
   };
 
   return (
-    <div className="">
-      <h1 className="title">Konfirmasi Servis</h1>
-      <h2 className="subtitle">
-        Menyesuaikan layanan yang dipesan dengan keadaan kerusakan AC customer
-      </h2>
-
+    <div className="box">
       <div className="card is-shadowless konfirmasi">
         <div className="card-content">
+          <h1 className="title">Konfirmasi Servis</h1>
+          <h2 className="subtitle">
+            Menyesuaikan layanan yang dipesan dengan keadaan kerusakan AC
+            customer
+          </h2>
           <hr className="border" />
           <div className="columns">
             <div className="column is-half pr-6">

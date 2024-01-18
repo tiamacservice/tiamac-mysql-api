@@ -20,11 +20,7 @@ const DetailServis = () => {
   //     }
   //   }, [isError, navigate]);
 
-  return (
-    <Layout>
-      <DetailServ />
-    </Layout>
-  );
+  return <DetailServ />;
 };
 
 export default DetailServis;

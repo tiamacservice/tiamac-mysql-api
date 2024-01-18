@@ -50,7 +50,7 @@ const Sidebar = () => {
             <ul className="menu-list">
               <li>
                 <NavLink to={"/allservis"}>
-                  <IoPerson /> Semua Pesanan
+                  <IoPerson /> Sedang Berjalan
                 </NavLink>
               </li>
               {/* <li>

@@ -17,11 +17,11 @@ const Sidebarcust = () => {
 
   return (
     <div>
-      <aside className="menu pl-2 has-shadow">
+      <aside className="menu pl-2 mt-2 has-shadow">
         <p className="menu-label">General</p>
         <ul className="menu-list">
           <li>
-            <NavLink to={"/dashboardcust"}>
+            <NavLink to={"/listpesanan"}>
               <IoHome /> Dashboard
             </NavLink>
           </li>
@@ -36,7 +36,7 @@ const Sidebarcust = () => {
           <ul className="menu-list">
             <li>
               <NavLink to={"/allserviscust"}>
-                <IoPerson /> Semua Layanan
+                <IoPerson /> Sedang Berjalan
               </NavLink>
             </li>
             <li>
@@ -55,8 +55,8 @@ const Sidebarcust = () => {
         <p className="menu-label">Settings</p>
         <ul className="menu-list">
           <li>
-            <button onClick={logout} className="button is-white">
-              <IoLogOut /> Logout
+            <button href="/pricing" className="button is-white">
+              <IoLogOut /> <a href="/dashboardcust">Home</a>
             </button>
           </li>
         </ul>

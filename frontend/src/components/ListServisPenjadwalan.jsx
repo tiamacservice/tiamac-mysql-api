@@ -22,7 +22,7 @@ const ListServisPenjadwalan = () => {
   };
 
   return (
-    <div>
+    <div className="box">
       <h1 className="title py-1 pt-3">Konfirmasi Teknisi</h1>
       <h2 className="subtitle mb-6">
         Membuat jadwal perbaikan dan memilih teknisi yang bertugas
@@ -44,26 +44,26 @@ const ListServisPenjadwalan = () => {
               <td>{index + 1}</td>
               <td>{servis.customer.name}</td>
               <td>{servis.alamat}</td>
-              <td>{servis.totalHarga}</td>
+              <td>Rp.{servis.totalHarga}</td>
               <td>{servis.status}</td>
               <td>
                 <Link
                   to={`/penjadwalanservis/edit/${servis.uuid}`}
-                  className="button is-small is-info"
+                  className="button is-small is-primary"
                 >
                   Membuat Jadwal
                 </Link>
                 <Link
                   to={`/servis/detail/${servis.uuid}`}
-                  className="button is-small is-info"
+                  className="button mx-1 is-small is-info"
                 >
-                  Detail Servis
+                  <i class="bx bx-search-alt-2"></i>
                 </Link>
                 <button
                   onClick={() => deleteServis(servis.uuid)}
                   className="button is-small is-danger"
                 >
-                  Delete
+                  <i className="bx bx-trash"></i>
                 </button>
               </td>
             </tr>

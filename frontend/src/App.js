@@ -32,6 +32,7 @@ import MenungguPembayaranCust from "./pages/MenungguPembayaranCust";
 import DetailServisCust from "./pages/DetailServisCust";
 import ContactCust from "./pages/ContactCust";
 import Pricing from "./pages/Pricing";
+import DashboardKaryawan from "./pages/DashboardKaryawan";
 
 // CSS
 
@@ -72,6 +73,7 @@ function App() {
           {/* //karyawan/admin */}
 
           <Route path="/loginstaff" element={<Login />} />
+          <Route path="/dashboardkaryawan" element={<DashboardKaryawan />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/users" element={<Users />} />
           <Route path="/customers" element={<Customers />} />

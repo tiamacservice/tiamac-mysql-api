@@ -79,29 +79,21 @@ const DetailServis = () => {
 
         <hr className="border" />
         <div>
-          <table className="table is-fullwidth is-narrow">
+          <table className="table is-fullwidth">
             <thead></thead>
             <tbody>
               <tr>
                 <th className="is-centered th top">Atas Nama</th>
                 <th className="is-centered th top">:</th>
                 <th className="is-centered th top">{name}</th>
-                <th className="is-centered th top">Alamat Servis </th>
+                <th className="is-centered th top">Tanggal Perbaikan</th>
                 <th className="is-centered th top">:</th>
-                <th className="is-centered th top">{alamat}</th>
+                <th className="is-centered th top">{dateServis}</th>
               </tr>
               <tr>
                 <th className="is-centered th top">No Telp </th>
                 <th className="is-centered th top">:</th>
                 <th className="is-centered th top">{no_telp}</th>
-                <th className="is-centered th top">Provinsi</th>
-                <th className="is-centered th top">:</th>
-                <th className="is-centered th top">{provinsi}</th>
-              </tr>
-              <tr>
-                <th className="is-centered th top">Tanggal Perbaikan</th>
-                <th className="is-centered th top">:</th>
-                <th className="is-centered th top">{dateServis}</th>
                 <th className="is-centered th top">Nama Teknisi</th>
                 <th className="is-centered th top">:</th>
                 <th className="is-centered th top">{namaKar}</th>
@@ -109,7 +101,9 @@ const DetailServis = () => {
               <tr>
                 <th className="is-centered th top">Alamat Servis</th>
                 <th className="is-centered th top">:</th>
-                <th className="is-centered th top">{alamat}</th>
+                <th colSpan="3" className="is-centered th top">
+                  {alamat}
+                </th>
               </tr>
             </tbody>
           </table>
@@ -156,7 +150,7 @@ const DetailServis = () => {
             )}
 
             <tr>
-              <td colSpan="2" className="bot has-text-weight-bold">
+              <td colSpan="2" className="bot  has-text-weight-bold">
                 Total Harga
               </td>
 

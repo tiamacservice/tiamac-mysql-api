@@ -22,10 +22,10 @@ const ListOnProsesServis = () => {
   };
 
   return (
-    <div>
+    <div className="box">
       <h1 className="title py-1">On Proses</h1>
       <h2 className="subtitle mb-6">
-        Teknisi dalam proses perbakan AC pelanggan
+        Teknisi dalam proses perbaikan AC pelanggan
       </h2>
       <table className="table is-striped is-fullwidth">
         <thead>
@@ -44,23 +44,23 @@ const ListOnProsesServis = () => {
               <td>{index + 1}</td>
               <td>{servis.customer.name}</td>
               <td>{servis.alamat}</td>
-              <td>{servis.totalHarga}</td>
+              <td>Rp.{servis.totalHarga}</td>
               <td>{servis.status}</td>
               <td>
-                <Link to={`/dashboard`} className="button is-small is-info">
+                <Link to={`/dashboard`} className="button is-small is-primary">
                   Servis Selesai
                 </Link>
                 <Link
                   to={`/servis/detail/${servis.uuid}`}
                   className="button is-small mx-1 is-info"
                 >
-                  Detail Servis
+                  <i class="bx bx-search-alt-2"></i>
                 </Link>
                 <button
                   onClick={() => deleteServis(servis.uuid)}
                   className="button is-small is-danger"
                 >
-                  Delete
+                  <i className="bx bx-trash"></i>
                 </button>
               </td>
             </tr>

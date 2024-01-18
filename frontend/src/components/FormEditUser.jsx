@@ -15,7 +15,9 @@ const FormEditUser = () => {
   useEffect(() => {
     const getUserById = async () => {
       try {
-        const response = await axios.get(process.env.REACT_APP_API_KEY+`/users/${id}`);
+        const response = await axios.get(
+          process.env.REACT_APP_API_KEY + `/users/${id}`
+        );
         setName(response.data.name);
         setEmail(response.data.email);
         setRole(response.data.role);
@@ -31,7 +33,7 @@ const FormEditUser = () => {
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(process.env.REACT_APP_API_KEY+`/users/${id}`, {
+      await axios.patch(process.env.REACT_APP_API_KEY + `/users/${id}`, {
         name: name,
         email: email,
         password: password,
@@ -47,11 +49,11 @@ const FormEditUser = () => {
   };
 
   return (
-    <div>
-      <h1 className="title">Users</h1>
-      <h2 className="subtitle">Update User</h2>
+    <div className="box">
       <div className="card is-shadowless">
         <div className="card-content">
+          <h1 className="title">Users</h1>
+          <h2 className="subtitle">Update User</h2>
           <div className="content">
             <form onSubmit={updateUser}>
               <p className="has-text-centered">{msg}</p>

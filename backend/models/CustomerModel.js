@@ -46,7 +46,7 @@ const Customers = db.define(
       },
     },
     no_telp: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,

@@ -22,7 +22,7 @@ const ListMenungguPembayaran = () => {
   };
 
   return (
-    <div>
+    <div className="box">
       <h1 className="title py-1 pt-3">Menunggu Pembayaran</h1>
       <h2 className="subtitle mb-6">Menunggu customer melakukan pembayaran</h2>
 
@@ -43,20 +43,20 @@ const ListMenungguPembayaran = () => {
               <td>{index + 1}</td>
               <td>{servis.customer.name}</td>
               <td>{servis.alamat}</td>
-              <td>{servis.totalHarga}</td>
+              <td>Rp.{servis.totalHarga}</td>
               <td>{servis.status}</td>
               <td>
                 <Link
                   to={`/servis/detail/${servis.uuid}`}
                   className="button is-small is-info"
                 >
-                  Detail Servis
+                  <i class="bx bx-search-alt-2"></i>
                 </Link>
                 <button
                   onClick={() => deleteServis(servis.uuid)}
-                  className="button is-small is-danger"
+                  className="button is-small mx-1 is-danger"
                 >
-                  Delete
+                  <i className="bx bx-trash"></i>
                 </button>
               </td>
             </tr>

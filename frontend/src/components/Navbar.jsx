@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import logo from "../logo.png";
+import logo from "../assets/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut, reset } from "../features/authSlice";
 
@@ -23,13 +23,19 @@ export const Navbar = () => {
   return (
     <div>
       <nav
-        className="navbar is-fixed-top has-shadow"
+        className="navbar is-info is-fixed-top has-shadow"
         role="navigation"
         aria-label="main navigation"
       >
         <div className="navbar-brand">
           <NavLink to="/dashboard" className="navbar-item">
-            <img src={logo} width="112" height="28" alt="logo" />
+            <img
+              className="ml-6"
+              src={logo}
+              width="100"
+              height="100"
+              alt="logo"
+            />
           </NavLink>
 
           <a
@@ -50,7 +56,7 @@ export const Navbar = () => {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                <button onClick={logout} className="button is-light">
+                <button onClick={logout} className="button is-light is-danger">
                   Log out
                 </button>
               </div>

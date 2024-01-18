@@ -9,7 +9,7 @@ import midtransClient from "midtrans-client";
 
 export const snap = new midtransClient.Snap({
   isProduction: false, // Ganti ke true jika sudah produksi
-  serverKey: "SB-Mid-server-fF93jgqGf3K3tpUumtK1BFFV", // Ganti dengan kunci server Midtrans Anda
+  serverKey: "SB-Mid-server-fF93jgqGf3K3tpUumtK1BFFV",
 });
 
 // get servis
@@ -87,6 +87,83 @@ export const getServices = async (req, res) => {
   }
 };
 
+export const onGoingServis = async (req, res) => {
+  try {
+    let response;
+    if (req.role === "admin") {
+      response = await Servis.findAll({
+        attributes: [
+          "uuid",
+          "status",
+          "alamat",
+          "provinsi",
+          "dateServis",
+          "ser1",
+          "ser2",
+          "ser3",
+          "ser4",
+          "hrg1",
+          "hrg2",
+          "hrg3",
+          "hrg4",
+          "totalHarga",
+        ],
+        where: {
+          [Op.not]: [{ status: "Selesai" }],
+        },
+        include: [
+          {
+            model: Customer,
+            attributes: ["name", "email", "no_telp"],
+          },
+          {
+            model: User,
+            attributes: ["name", "email"],
+          },
+        ],
+      });
+    }
+    if (req.role === "karyawan") {
+      response = await Servis.findAll({
+        attributes: [
+          "uuid",
+          "status",
+          "alamat",
+          "provinsi",
+          "dateServis",
+          "ser1",
+          "ser2",
+          "ser3",
+          "ser4",
+          "hrg1",
+          "hrg2",
+          "hrg3",
+          "hrg4",
+          "totalHarga",
+        ],
+        where: {
+          [Op.not]: [{ status: "Selesai" }],
+          userId: req.userId,
+        },
+
+        include: [
+          {
+            model: Customer,
+            attributes: ["name", "email", "no_telp"],
+          },
+          {
+            model: User,
+            attributes: ["name", "email"],
+          },
+        ],
+      });
+    }
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+};
+
 export const getTokenPayment = async (req, res) => {
   // console.log(req.params.id);
   const servis = await Servis.findOne({
@@ -123,7 +200,7 @@ export const getTokenPayment = async (req, res) => {
       first_name: servis.customer.name,
       last_name: servis.customer.name,
       email: servis.customer.email,
-      phone: servis.customer.no_telp
+      phone: servis.customer.no_telp,
     },
   };
 
@@ -434,6 +511,49 @@ export const konfirmasiTeknisi = async (req, res) => {
 
 //GET SERVIS WITH SPECIFIC STATUS (customer)
 
+export const onGoingServisCust = async (req, res) => {
+  try {
+    let response;
+    response = await Servis.findAll({
+      attributes: [
+        "uuid",
+        "status",
+        "alamat",
+        "provinsi",
+        "dateServis",
+        "ser1",
+        "ser2",
+        "ser3",
+        "ser4",
+        "hrg1",
+        "hrg2",
+        "hrg3",
+        "hrg4",
+        "totalHarga",
+      ],
+      where: {
+        [Op.not]: [{ status: "Selesai" }],
+        customerId: req.customerId,
+      },
+
+      include: [
+        {
+          model: Customer,
+          attributes: ["name", "email", "no_telp"],
+        },
+        {
+          model: User,
+          attributes: ["name", "email"],
+        },
+      ],
+    });
+
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+};
+
 export const getAllServisCust = async (req, res) => {
   try {
     let response;
@@ -461,6 +581,10 @@ export const getAllServisCust = async (req, res) => {
         {
           model: Customer,
           attributes: ["name", "email", "no_telp"],
+        },
+        {
+          model: User,
+          attributes: ["name", "email"],
         },
       ],
     });

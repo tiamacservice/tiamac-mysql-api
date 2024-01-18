@@ -14,7 +14,7 @@ const FormAddUser = () => {
   const saveUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(process.env.REACT_APP_API_KEY+`/users`, {
+      await axios.post(process.env.REACT_APP_API_KEY + `/users`, {
         name: name,
         email: email,
         password: password,
@@ -30,11 +30,11 @@ const FormAddUser = () => {
   };
 
   return (
-    <div>
-      <h1 className="title">Users</h1>
-      <h2 className="subtitle">Add New User</h2>
+    <div className="box">
       <div className="card is-shadowless">
         <div className="card-content">
+          <h1 className="title">Staff</h1>
+          <h2 className="subtitle">Add New Staff</h2>
           <div className="content">
             <form onSubmit={saveUser}>
               <p className="has-text-centered">{msg}</p>

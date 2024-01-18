@@ -42,11 +42,11 @@ const NewPesanan = () => {
   };
 
   return (
-    <div>
-      <h1 className="title">Pemesanan Layanan Servis AC</h1>
-      <h2 className="subtitle">Booking New AC Service</h2>
+    <div class="box mt-5 mx-5">
       <div className="card is-shadowless">
         <div className="card-content">
+          <h1 className="title">Pemesanan Layanan Servis AC</h1>
+          <h2 className="subtitle">Booking New AC Service</h2>
           <div className="content">
             <form onSubmit={newservis}>
               <p calssName="has-text-center">{msg}</p>
@@ -54,11 +54,11 @@ const NewPesanan = () => {
                 <label className="label">Alamat</label>
                 <div className="control">
                   <input
-                    type="text"
+                    type="textarea"
                     className="input"
                     value={alamat}
                     onChange={(e) => setAlamat(e.target.value)}
-                    placeholder="Name"
+                    placeholder="Hanya untuk sekitar daerah jakarta"
                   />
                 </div>
               </div>
@@ -88,7 +88,7 @@ const NewPesanan = () => {
                       onChange={(e) => {
                         setHrg1(e.target.value, 10);
                         setSer1(e.target.options[e.target.selectedIndex].text);
-                        console.log(e.target)
+                        console.log(e.target);
                       }}
                     >
                       <option value={0}>Tidak</option>
@@ -104,14 +104,10 @@ const NewPesanan = () => {
                   <div className="select is-fullwidth">
                     <select
                       value={hrg2}
-                      onChange={
-                        (e) => {
-                          setHrg2(e.target.value, 10)
-                          setSer2(e.target.options[e.target.selectedIndex].text);
-                        }
-                       
-                      
-                      }
+                      onChange={(e) => {
+                        setHrg2(e.target.value, 10);
+                        setSer2(e.target.options[e.target.selectedIndex].text);
+                      }}
                     >
                       <option value={0}>Tidak</option>
                       <option value={100000}>Bongkar AC Rp100.000</option>
@@ -134,14 +130,13 @@ const NewPesanan = () => {
                 </div>
               </div>
               <div className="field">
-                <label className="label"></label>
+                <label className="label">Ganti Kapasitor</label>
                 <div className="control">
-                  Ganti Kapasitor
                   <div className="select is-fullwidth">
                     <select
                       value={hrg3}
                       onChange={(e) => {
-                        setHrg3(e.target.value, 10)
+                        setHrg3(e.target.value, 10);
                         setSer3(e.target.options[e.target.selectedIndex].text);
                       }}
                     >

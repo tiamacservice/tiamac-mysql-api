@@ -1,77 +1,96 @@
-import React, { useEffect, useState } from "react";
-import Welcome from "../components/Welcome";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { getMeCust } from "../features/authSlice";
-import Layout from "./LayoutCustomer";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
-import "../assets/css/dashboard.css";
+import { getMe } from "../features/authSlice";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
-const ListPesanan = () => {
+const WelcomeKaryawan = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
   const [OnGoingCount, setOnGoingCount] = useState();
+  const [CustomerCount, setCustomerCount] = useState();
+  const [KaryawanCount, setKaryawanCount] = useState();
   const [ServisSelesaiCount, setServisSelesaiCount] = useState();
   const [AllServisCount, setAllServisCount] = useState();
   const [MenungguPembayaranCount, setMenungguPembayaranCount] = useState();
   const [onGoingServis, setOnGoingServis] = useState([]);
-  const { isError } = useSelector((state) => state.auth);
-  const { customer } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    dispatch(getMeCust());
+    dispatch(getMe());
     OnGoingServis();
     ServisSelesai();
     AllServis();
+    AllKaryawan();
+    AllCustomer();
     ServisMenungguPembayaran();
   }, [dispatch]);
 
-  useEffect(() => {
-    if (isError) {
-      navigate("/");
-    }
-  }, [isError, navigate]);
-
   const OnGoingServis = async () => {
     const response = await axios.get(
-      process.env.REACT_APP_API_KEY + `/ongoingserviscust`
+      process.env.REACT_APP_API_KEY + `/ongoingservis`
     );
     setOnGoingServis(response.data);
     setOnGoingCount(response.data.length);
   };
 
+  const AllKaryawan = async () => {
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/users`);
+    setKaryawanCount(response.data.length);
+  };
+
+  const AllCustomer = async () => {
+    const response = await axios.get(
+      process.env.REACT_APP_API_KEY + `/customers`
+    );
+    setCustomerCount(response.data.length);
+  };
+
   const ServisSelesai = async () => {
     const response = await axios.get(
-      process.env.REACT_APP_API_KEY + `/servisselesai`
+      process.env.REACT_APP_API_KEY + `/allservisselesai`
     );
     setServisSelesaiCount(response.data.length);
   };
 
   const AllServis = async () => {
-    const response = await axios.get(
-      process.env.REACT_APP_API_KEY + `/custservis`
-    );
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/servis`);
     setAllServisCount(response.data.length);
   };
 
   const ServisMenungguPembayaran = async () => {
     const response = await axios.get(
-      process.env.REACT_APP_API_KEY + "/menunggupembayaran"
+      process.env.REACT_APP_API_KEY + "/allmenunggupembayaran"
     );
     setMenungguPembayaranCount(response.data.length);
   };
 
   return (
-    <Layout>
+    <div>
       <div className="dashboard">
-        <section class="hero is-info welcome is-small ">
+        <section class="hero is-info Karyawan is-small">
           <div class="hero-body">
             <div class="container">
-              <h1 class="title">Hello, {customer && customer.name}</h1>
+              <h1 class="title">Hello, {user && user.name}</h1>
               <h2 class="subtitle">
-                e-mail : {customer && customer.email}, no-telp :{" "}
-                {customer && customer.no_telp}
+                e-mail : {user && user.email} , role : {user && user.role}
               </h2>
+            </div>
+          </div>
+        </section>
+        <section class="info-tiles">
+          <div class="tile is-ancestor has-text-centered">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">{KaryawanCount}</p>
+                <p class="subtitle">Jumlah Staff</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">{CustomerCount}</p>
+                <p class="subtitle">Jumlah Customer</p>
+              </article>
             </div>
           </div>
         </section>
@@ -103,29 +122,29 @@ const ListPesanan = () => {
             </div>
           </div>
         </section>
+
         <div class="columns">
           <div class="column is-12">
             <div class="card events-card">
               <header class="card-header">
-                <p class="card-header-title">Events</p>
+                <p class="card-header-title">SERVIS SEDANG BERJALAN</p>
                 <a href="#" class="card-header-icon" aria-label="more options">
                   <span class="icon">
                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                   </span>
                 </a>
               </header>
-
               <div class="card-table">
                 <div class="content">
                   <table class="table is-fullwidth is-striped">
                     <thead>
                       <tr>
                         <th>No</th>
+                        <th>Nama Customer</th>
+                        <th>Email Customer</th>
+
                         <th>Alamat Perbaikan</th>
-                        <th>Tanggal Perbaikan</th>
-                        {/* <th>Nama Teknisi</th> */}
                         <th>Total Harga</th>
-                        <th>Nama Teknisi</th>
                         <th>Status</th>
                       </tr>
                     </thead>
@@ -134,23 +153,10 @@ const ListPesanan = () => {
                       {onGoingServis.map((servis, index) => (
                         <tr key={servis.uuid}>
                           <td>{index + 1}</td>
+                          <td>{servis.customer.name}</td>
+                          <td>{servis.customer.email}</td>
                           <td className="td-alamat">{servis.alamat}</td>
-                          <td>
-                            {" "}
-                            {servis.dateServis != null ? (
-                              <p> {servis.dateServis} </p>
-                            ) : (
-                              <i>Menunggu Admin</i>
-                            )}
-                          </td>
                           <td>Rp.{servis.totalHarga}</td>
-                          <td>
-                            {servis.user != null ? (
-                              <p> {servis.user.name} </p>
-                            ) : (
-                              <i>Menunggu Admin</i>
-                            )}
-                          </td>
                           <td>{servis.status}</td>
                         </tr>
                       ))}
@@ -159,7 +165,7 @@ const ListPesanan = () => {
                 </div>
               </div>
               <footer class="card-footer">
-                <a href="/allserviscust" class="card-footer-item">
+                <a href="/allservis" class="card-footer-item">
                   View All
                 </a>
               </footer>
@@ -167,8 +173,8 @@ const ListPesanan = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 
-export default ListPesanan;
+export default WelcomeKaryawan;

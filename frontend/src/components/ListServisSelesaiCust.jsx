@@ -10,22 +10,22 @@ const ListServisSelesai = () => {
   }, []);
 
   const getServis = async () => {
-    const response = await axios.get(process.env.REACT_APP_API_KEY+`/servisselesai`);
+    const response = await axios.get(
+      process.env.REACT_APP_API_KEY + `/servisselesai`
+    );
     setServis(response.data);
   };
 
   const deleteServis = async (ServisId) => {
-    await axios.delete(process.env.REACT_APP_API_KEY+`/servis/${ServisId}`);
+    await axios.delete(process.env.REACT_APP_API_KEY + `/servis/${ServisId}`);
     getServis();
   };
 
   return (
-    <div>
-      <h1 className="title">Products</h1>
-      <h2 className="subtitle">List of Products</h2>
-      <Link to="/products/add" className="button is-primary mb-2">
-        Add New
-      </Link>
+    <div className="box mt-5">
+      <h1 className="title">History Servis</h1>
+      <h2 className="subtitle">Services History</h2>
+
       <table className="table is-striped is-fullwidth">
         <thead>
           <tr>
@@ -43,20 +43,20 @@ const ListServisSelesai = () => {
               <td>{index + 1}</td>
               <td>{servis.customer.name}</td>
               <td>{servis.alamat}</td>
-              <td>{servis.totalHarga}</td>
+              <td>Rp.{servis.totalHarga}</td>
               <td>{servis.status}</td>
               <td>
                 <Link
                   to={`/servis/detail/${servis.uuid}`}
-                  className="button is-small is-info"
+                  className="button mx-1 is-small is-info"
                 >
-                  Detail Servis
+                  <i class="bx bx-search-alt-2"></i>
                 </Link>
                 <button
                   onClick={() => deleteServis(servis.uuid)}
                   className="button is-small is-danger"
                 >
-                  Delete
+                  <i className="bx bx-trash"></i>
                 </button>
               </td>
             </tr>

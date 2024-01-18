@@ -11,13 +11,13 @@ const ListKonfirmasiCustomer = () => {
 
   const getServis = async () => {
     const response = await axios.get(
-      process.env.REACT_APP_API_KEY+`/allkonfirmasicustomer`
+      process.env.REACT_APP_API_KEY + `/allkonfirmasicustomer`
     );
     setServis(response.data);
   };
 
   const deleteServis = async (ServisId) => {
-    await axios.delete(process.env.REACT_APP_API_KEY+`/servis/${ServisId}`);
+    await axios.delete(process.env.REACT_APP_API_KEY + `/servis/${ServisId}`);
     getServis();
   };
 
@@ -45,20 +45,20 @@ const ListKonfirmasiCustomer = () => {
               <td>{index + 1}</td>
               <td>{servis.customer.name}</td>
               <td>{servis.alamat}</td>
-              <td>{servis.totalHarga}</td>
+              <td>Rp.{servis.totalHarga}</td>
               <td>{servis.status}</td>
               <td>
                 <Link
                   to={`/servis/detail/${servis.uuid}`}
                   className="button is-small is-info"
                 >
-                  Detail Servis
+                  <i class="bx bx-search-alt-2"></i>
                 </Link>
                 <button
                   onClick={() => deleteServis(servis.uuid)}
                   className="button is-small is-danger"
                 >
-                  Delete
+                  <i className="bx bx-trash"></i>
                 </button>
               </td>
             </tr>

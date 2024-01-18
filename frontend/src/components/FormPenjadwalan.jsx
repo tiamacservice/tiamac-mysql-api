@@ -55,11 +55,14 @@ const FormPenjadwalan = () => {
   };
 
   return (
-    <div>
-      <h1 className="title">Products</h1>
-      <h2 className="subtitle">Edit Products</h2>
+    <div className="box">
       <div className="card is-shadowless">
         <div className="card-content">
+          <h1 className="title">Penjadwalan Servis</h1>
+          <h2 className="subtitle">
+            Pilih tanggal servis dan karyawan yang bertugas
+          </h2>
+          <hr />
           <div className="content">
             <form onSubmit={PenjadwalanServis}>
               <p className="has-text-center">{msg}</p>

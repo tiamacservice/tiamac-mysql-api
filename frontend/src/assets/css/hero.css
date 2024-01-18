@@ -86,3 +86,17 @@
 .footer {
   background-color: rgb(255, 0, 60);
 }
+
+.td-alamat {
+  max-width: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.border {
+  border: none;
+  height: 1px;
+  color: #817c7c;
+  background-color: #797676;
+}

@@ -10,12 +10,16 @@ const ProductList = () => {
   }, []);
 
   const getProducts = async () => {
-    const response = await axios.get(process.env.REACT_APP_API_KEY+`/products`);
+    const response = await axios.get(
+      process.env.REACT_APP_API_KEY + `/products`
+    );
     setProducts(response.data);
   };
 
   const deleteProduct = async (productId) => {
-    await axios.delete(process.env.REACT_APP_API_KEY+`/products/${productId}`);
+    await axios.delete(
+      process.env.REACT_APP_API_KEY + `/products/${productId}`
+    );
     getProducts();
   };
 
@@ -48,13 +52,13 @@ const ProductList = () => {
                   to={`/products/edit/${product.uuid}`}
                   className="button is-small is-info"
                 >
-                  Edit
+                  <i className="bx bxs-edit-alt"></i>
                 </Link>
                 <button
                   onClick={() => deleteProduct(product.uuid)}
                   className="button is-small is-danger"
                 >
-                  Delete
+                  <i className="bx bx-trash"></i>
                 </button>
               </td>
             </tr>

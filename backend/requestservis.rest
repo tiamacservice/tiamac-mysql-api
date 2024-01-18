@@ -18,12 +18,12 @@ Content-Type: application/json
 
 ###
 //Login Customer
-POST https://node.tiamacservice.my.id/logincust
+POST http://localhost:5001/logincust
 Content-Type: application/json
 
 {
 
-    "email" : "cust2@gmail.com",
+    "email" : "budi@gmail.com",
     "password": "112233"
 
 }

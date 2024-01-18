@@ -51,7 +51,7 @@ Content-Type: application/json
 {
 
     "email" : "john@gmail.com",
-    "password": "123456"
+    "password": "112233"
 
 }
 
@@ -63,7 +63,7 @@ Content-Type: application/json
 {
 
     "email" : "admin@gmail.com",
-    "password": "123456"
+    "password": "112233"
 
 }
 
@@ -71,6 +71,13 @@ Content-Type: application/json
 //Get All Servis
 GET http://localhost:5001/servis
 
+###
+//Get ongoing Servis (staff)
+GET http://localhost:5001/ongoingservis
+
+###
+//Get ongoing Servis (cust)
+GET http://localhost:5001/ongoingserviscust
 
 ###
 //Me (Session)
