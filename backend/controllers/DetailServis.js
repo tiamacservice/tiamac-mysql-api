@@ -52,7 +52,7 @@ export const getServices = async (req, res) => {
         ],
       });
     }
-    if (req.role === "karyawan") {
+    if (req.role === "teknisi") {
       response = await Servis.findAll({
         attributes: [
           "uuid",
@@ -123,7 +123,7 @@ export const onGoingServis = async (req, res) => {
         ],
       });
     }
-    if (req.role === "karyawan") {
+    if (req.role === "teknisi") {
       response = await Servis.findAll({
         attributes: [
           "uuid",
@@ -431,6 +431,30 @@ export const PenjadwalanServis = async (req, res) => {
         }
       );
     }
+    res.status(200).json({ msg: "Servis berhasil di update" });
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+};
+
+export const KonfirmasiSelesai = async (req, res) => {
+  try {
+    const servis = await Servis.findOne({
+      where: {
+        uuid: req.params.id,
+      },
+    });
+    if (!servis) return res.status(404).json({ msg: "Data tidak ditemukan" });
+    const { status } = req.body;
+
+    await Servis.update(
+      { status },
+      {
+        where: {
+          id: servis.id,
+        },
+      }
+    );
     res.status(200).json({ msg: "Servis berhasil di update" });
   } catch (error) {
     res.status(500).json({ msg: error.message });
@@ -905,7 +929,7 @@ export const getMenungguPembayaran = async (req, res) => {
         ],
       });
     }
-    if (req.role === "karyawan") {
+    if (req.role === "teknisi") {
       response = await Servis.findAll({
         attributes: [
           "uuid",
@@ -963,7 +987,7 @@ export const getProsesServis = async (req, res) => {
           "totalHarga",
         ],
         where: {
-          status: "Proses Servis",
+          status: "Proses Service",
         },
         include: [
           {
@@ -1002,7 +1026,7 @@ export const getProsesServis = async (req, res) => {
         ],
         where: {
           userId: req.userId,
-          status: "Proses Servis",
+          status: "Proses Service",
         },
         include: [
           {
@@ -1060,7 +1084,7 @@ export const getKonfirmasiCustomer = async (req, res) => {
         ],
       });
     }
-    if (req.role === "karyawan") {
+    if (req.role === "teknisi") {
       response = await Servis.findAll({
         attributes: [
           "uuid",
@@ -1138,7 +1162,7 @@ export const getServisSelesai = async (req, res) => {
         ],
       });
     }
-    if (req.role === "karyawan") {
+    if (req.role === "teknisi") {
       response = await Servis.findAll({
         attributes: [
           "uuid",

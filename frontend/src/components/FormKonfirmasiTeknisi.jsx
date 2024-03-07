@@ -7,7 +7,7 @@ const FormEditProduct = () => {
   const [alamat, setAlamat] = useState("");
   const [provinsi, setProvinsi] = useState("");
   const [no_telp, setNoTelp] = useState("");
-  const [namaKar, setNamaKaryawan] = useState("");
+  const [namaTek, setNamaTeknisi] = useState("");
   const [name, setName] = useState("");
   const [dateServis, setDateServis] = useState("");
   const [ser1, setSer1] = useState("");
@@ -43,7 +43,7 @@ const FormEditProduct = () => {
         setName(response.data.customer.name);
         setDateServis(response.data.dateServis);
         setTotalHarga(response.data.totalHarga);
-        setNamaKaryawan(response.data.user.name);
+        setNamaTeknisi(response.data.user.name);
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
@@ -127,7 +127,7 @@ const FormEditProduct = () => {
                   <tr>
                     <th className="is-centered th">Nama Teknisi</th>
                     <th className="is-centered	th">:</th>
-                    <th className="is-centered	th">{namaKar}</th>
+                    <th className="is-centered	th">{namaTek}</th>
                   </tr>
                 </tbody>
               </table>
@@ -144,7 +144,11 @@ const FormEditProduct = () => {
                   <div className="select is-fullwidth">
                     <select
                       value={hrg1}
-                      onChange={(e) => setHrg1(e.target.value, 10)}
+                      onChange={(e) => {
+                        setHrg1(e.target.value, 10);
+                        setSer1(e.target.options[e.target.selectedIndex].text);
+                        console.log(e.target);
+                      }}
                     >
                       <option value={0}>Tidak</option>
                       <option value={50000}>Cuci AC 0.5 - 1 PK Rp50.000</option>
@@ -159,7 +163,11 @@ const FormEditProduct = () => {
                   <div className="select is-fullwidth">
                     <select
                       value={hrg2}
-                      onChange={(e) => setHrg2(e.target.value, 10)}
+                      onChange={(e) => {
+                        setHrg2(e.target.value, 10);
+                        setSer2(e.target.options[e.target.selectedIndex].text);
+                        console.log(e.target);
+                      }}
                     >
                       <option value={0}>Tidak</option>
                       <option value={100000}>Bongkar AC Rp100.000</option>
@@ -188,7 +196,11 @@ const FormEditProduct = () => {
                   <div className="select is-fullwidth">
                     <select
                       value={hrg3}
-                      onChange={(e) => setHrg3(e.target.value, 10)}
+                      onChange={(e) => {
+                        setHrg3(e.target.value, 10);
+                        setSer3(e.target.options[e.target.selectedIndex].text);
+                        console.log(e.target);
+                      }}
                     >
                       <option value={0}>Tidak</option>
                       <option value={250000}>
@@ -207,7 +219,11 @@ const FormEditProduct = () => {
                   <div className="select is-fullwidth">
                     <select
                       value={hrg4}
-                      onChange={(e) => setHrg4(e.target.value, 10)}
+                      onChange={(e) => {
+                        setHrg4(e.target.value, 10);
+                        setSer4(e.target.options[e.target.selectedIndex].text);
+                        console.log(e.target);
+                      }}
                     >
                       <option value={0}>Tidak</option>
                       <option value={150000}>

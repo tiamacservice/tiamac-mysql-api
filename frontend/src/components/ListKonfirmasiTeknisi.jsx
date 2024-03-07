@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 const ListKonfirmasiTeknisi = () => {
   const [servis, setServis] = useState([]);
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     getServis();
@@ -60,12 +62,14 @@ const ListKonfirmasiTeknisi = () => {
                 >
                   <i class="bx bx-search-alt-2"></i>
                 </Link>
-                <button
-                  onClick={() => deleteServis(servis.uuid)}
-                  className="button is-small is-danger"
-                >
-                  <i className="bx bx-trash"></i>
-                </button>
+                {user && user.role === "admin" && (
+                  <button
+                    onClick={() => deleteServis(servis.uuid)}
+                    className="button is-small is-danger"
+                  >
+                    <i className="bx bx-trash"></i>
+                  </button>
+                )}
               </td>
             </tr>
           ))}

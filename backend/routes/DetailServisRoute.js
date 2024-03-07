@@ -21,6 +21,7 @@ import {
   getTokenPayment,
   onGoingServis,
   onGoingServisCust,
+  KonfirmasiSelesai,
 } from "../controllers/DetailServis.js";
 import {
   verifyUser,
@@ -38,7 +39,7 @@ router.post("/servis", verifyCustomer, createServis);
 router.patch("/servis/:id", verifyUser, updateServis);
 router.delete("/servis/:id", verifyUser, deleteServis);
 
-//Get servis with spesific status (karyawan/admin)
+//Get servis with spesific status (teknisi/admin)
 router.get("/allpenjadwalan/", verifyUser, getMenungguPenjadwalan);
 router.get("/allkonfirmasiteknisi/", verifyUser, getKonfirmasiTeknisi);
 router.get("/allmenunggupembayaran/", verifyUser, getMenungguPembayaran);
@@ -59,5 +60,6 @@ router.post("/newservis", verifyCustomer, newservis);
 router.patch("/penjadwalanservis/:id", verifyUser, PenjadwalanServis);
 router.patch("/formkonfirmasiteknisi/:id", verifyUser, konfirmasiTeknisi);
 router.get("/gettokenmidtrans/:id", verifyCustomer, getTokenPayment);
+router.patch("/konfirmasiselesai/:id", verifyUser, KonfirmasiSelesai);
 
 export default router;

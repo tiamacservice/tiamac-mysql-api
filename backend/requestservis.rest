@@ -36,7 +36,7 @@ Content-Type: application/json
 {
 
     "email" : "john@gmail.com",
-    "password": "123456"
+    "password": "112233"
 
 }
 
@@ -67,6 +67,16 @@ GET http://localhost:5001/servis
 ###
 //Get All Servis
 GET http://localhost:5001/custservis
+
+###
+//Updet Servis
+PATCH http://localhost:5001/konfirmasiselesai/c753ba94-81a0-4fb9-ac08-f01def5656e1
+Content-Type: application/json
+
+{
+    
+    "status" : "Selesai"
+}
 
 
 ###

@@ -3,7 +3,7 @@ import Customer from "../models/CustomerModel.js";
 
 export const verifyUser = async (req, res, next) => {
   if (!req.session.userId) {
-    return res.status(401).json({ msg: "mohon login ke akun anda (karyawan)" });
+    return res.status(401).json({ msg: "mohon login ke akun anda (teknisi)" });
   }
   const user = await User.findOne({
     where: {

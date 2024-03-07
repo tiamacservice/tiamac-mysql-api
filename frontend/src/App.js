@@ -33,6 +33,7 @@ import DetailServisCust from "./pages/DetailServisCust";
 import ContactCust from "./pages/ContactCust";
 import Pricing from "./pages/Pricing";
 import DashboardKaryawan from "./pages/DashboardKaryawan";
+import FormServisSelesai from "./pages/FormServisSelesai";
 
 // CSS
 
@@ -51,6 +52,7 @@ function App() {
           <Route path="/" element={<Home />} />
 
           {/* //Customer */}
+
           <Route path="/pesananbaru" element={<NewPesanan />} />
           <Route path="/servis/detailcust/:id" element={<DetailServisCust />} />
           <Route path="/dashboardcust" element={<DashboardCustomer />} />
@@ -70,7 +72,7 @@ function App() {
           />
           <Route path="/servisselesaicust" element={<ServisSelesaiCust />} />
 
-          {/* //karyawan/admin */}
+          {/* //teknisi/admin */}
 
           <Route path="/loginstaff" element={<Login />} />
           <Route path="/dashboardkaryawan" element={<DashboardKaryawan />} />
@@ -88,6 +90,10 @@ function App() {
           <Route
             path="/konfirmasiteknisi/edit/:id"
             element={<FormKonfirmasiTeknisi />}
+          />
+          <Route
+            path="/formservisselesai/:id"
+            element={<FormServisSelesai />}
           />
           <Route path="/allservis" element={<AllServis />} />
           <Route path="/allkonfirmasiteknisi" element={<KonfirmasiTeknisi />} />

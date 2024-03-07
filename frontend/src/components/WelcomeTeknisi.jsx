@@ -5,12 +5,12 @@ import { getMe } from "../features/authSlice";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
-const WelcomeKaryawan = () => {
+const WelcomeTeknisi = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const [OnGoingCount, setOnGoingCount] = useState();
   const [CustomerCount, setCustomerCount] = useState();
-  const [KaryawanCount, setKaryawanCount] = useState();
+  const [TeknisiCount, setTeknisiCount] = useState();
   const [ServisSelesaiCount, setServisSelesaiCount] = useState();
   const [AllServisCount, setAllServisCount] = useState();
   const [MenungguPembayaranCount, setMenungguPembayaranCount] = useState();
@@ -21,7 +21,7 @@ const WelcomeKaryawan = () => {
     OnGoingServis();
     ServisSelesai();
     AllServis();
-    AllKaryawan();
+    AllTeknisi();
     AllCustomer();
     ServisMenungguPembayaran();
   }, [dispatch]);
@@ -34,9 +34,9 @@ const WelcomeKaryawan = () => {
     setOnGoingCount(response.data.length);
   };
 
-  const AllKaryawan = async () => {
+  const AllTeknisi = async () => {
     const response = await axios.get(process.env.REACT_APP_API_KEY + `/users`);
-    setKaryawanCount(response.data.length);
+    setTeknisiCount(response.data.length);
   };
 
   const AllCustomer = async () => {
@@ -82,7 +82,7 @@ const WelcomeKaryawan = () => {
           <div class="tile is-ancestor has-text-centered">
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">{KaryawanCount}</p>
+                <p class="title">{TeknisiCount}</p>
                 <p class="subtitle">Jumlah Staff</p>
               </article>
             </div>
@@ -177,4 +177,4 @@ const WelcomeKaryawan = () => {
   );
 };
 
-export default WelcomeKaryawan;
+export default WelcomeTeknisi;

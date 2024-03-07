@@ -52,6 +52,7 @@ const LoginCust = () => {
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        required
                       />
                     </div>
                   </div>
@@ -64,6 +65,7 @@ const LoginCust = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Password"
+                        required
                       />
                     </div>
                   </div>

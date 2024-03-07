@@ -5,7 +5,7 @@ import {
   createUser,
   updateUser,
   deleteUser,
-  getAllKaryawan,
+  getAllTeknisi,
 } from "../controllers/Users.js";
 import { verifyUser, adminOnly } from "../middleware/AuthUser.js";
 
@@ -13,7 +13,7 @@ const router = express.Router();
 
 // router.get("/users", verifyUser, adminOnly, getUsers);
 router.get("/users", verifyUser, getUsers);
-router.get("/allkaryawan", getAllKaryawan);
+router.get("/allteknisi", getAllTeknisi);
 router.get("/users/:id", verifyUser, adminOnly, getUserById);
 router.post("/users", createUser);
 router.patch("/users/:id", verifyUser, adminOnly, updateUser);

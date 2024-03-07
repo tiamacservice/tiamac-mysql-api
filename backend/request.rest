@@ -15,7 +15,7 @@ Content-Type: application/json
 GET http://localhost:5001/users
 
 ###
-//get all karyawan
+//get all teknisi
 
 GET http://localhost:5001/allkaryawan
 
@@ -35,7 +35,7 @@ Content-Type: application/json
     "email" : "john@gmail.com",
     "password": "",
     "confPassword": "",
-    "role": "karyawan"
+    "role": "teknisi"
 }
 
 ###

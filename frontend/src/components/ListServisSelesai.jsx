@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 const ListServisSelesai = () => {
   const [servis, setServis] = useState([]);
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     getServis();
@@ -54,12 +56,14 @@ const ListServisSelesai = () => {
                 >
                   <i class="bx bx-search-alt-2"></i>
                 </Link>
-                <button
-                  onClick={() => deleteServis(servis.uuid)}
-                  className="button is-small is-danger"
-                >
-                  <i className="bx bx-trash"></i>
-                </button>
+                {user && user.role === "admin" && (
+                  <button
+                    onClick={() => deleteServis(servis.uuid)}
+                    className="button is-small is-danger"
+                  >
+                    <i className="bx bx-trash"></i>
+                  </button>
+                )}
               </td>
             </tr>
           ))}

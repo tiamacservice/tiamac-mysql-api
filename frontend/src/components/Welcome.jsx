@@ -12,7 +12,7 @@ const Welcome = () => {
   const [CustomerCount, setCustomerCount] = useState();
   const [DalamProsesServisCount, setDalamProsesServisCount] = useState();
   const [MenungguKonfirmasiCount, setMenungguKonfirmasiCount] = useState();
-  const [KaryawanCount, setKaryawanCount] = useState();
+  const [TeknisiCount, setTeknisiCount] = useState();
   const [ServisSelesaiCount, setServisSelesaiCount] = useState();
   const [AllServisCount, setAllServisCount] = useState();
   const [MenungguPembayaranCount, setMenungguPembayaranCount] = useState();
@@ -23,7 +23,7 @@ const Welcome = () => {
     OnGoingServis();
     ServisSelesai();
     AllServis();
-    AllKaryawan();
+    AllTeknisi();
     AllCustomer();
     DalamProsesServis();
     ServisMenungguKonfirmasi();
@@ -38,9 +38,9 @@ const Welcome = () => {
     setOnGoingCount(response.data.length);
   };
 
-  const AllKaryawan = async () => {
+  const AllTeknisi = async () => {
     const response = await axios.get(process.env.REACT_APP_API_KEY + `/users`);
-    setKaryawanCount(response.data.length);
+    setTeknisiCount(response.data.length);
   };
 
   const AllCustomer = async () => {
@@ -103,7 +103,7 @@ const Welcome = () => {
             <div class="tile is-ancestor has-text-centered">
               <div class="tile is-parent">
                 <article class="tile is-child box">
-                  <p class="title">{KaryawanCount}</p>
+                  <p class="title">{TeknisiCount}</p>
                   <p class="subtitle">Jumlah Staff</p>
                 </article>
               </div>
@@ -200,9 +200,9 @@ const Welcome = () => {
         </div>
       )}
 
-      {/* dashboardkaryawan */}
+      {/* dashboardteknisi */}
 
-      {user && user.role === "karyawan" && (
+      {user && user.role === "teknisi" && (
         <div className="dashboard">
           <section class="hero is-info welcome is-small">
             <div class="hero-body">

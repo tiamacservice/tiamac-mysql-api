@@ -47,6 +47,7 @@ const FormAddUser = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Name"
+                    required
                   />
                 </div>
               </div>
@@ -54,11 +55,12 @@ const FormAddUser = () => {
                 <label className="label">Email</label>
                 <div className="control">
                   <input
-                    type="text"
+                    type="email"
                     className="input"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
+                    required
                   />
                 </div>
               </div>
@@ -71,6 +73,7 @@ const FormAddUser = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="*******"
+                    required
                   />
                 </div>
               </div>
@@ -83,6 +86,7 @@ const FormAddUser = () => {
                     value={confPassword}
                     onChange={(e) => setConfPassword(e.target.value)}
                     placeholder="*******"
+                    required
                   />
                 </div>
               </div>
@@ -96,7 +100,7 @@ const FormAddUser = () => {
                     >
                       <option>Pilih Role</option>
                       <option value="admin">Admin</option>
-                      <option value="karyawan">Karyawan</option>
+                      <option value="teknisi">Teknisi</option>
                     </select>
                   </div>
                 </div>

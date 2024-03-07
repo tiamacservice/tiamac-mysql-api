@@ -5,13 +5,13 @@ import { useNavigate, useParams } from "react-router-dom";
 const FormPenjadwalan = () => {
   const [dateServis, setdateServis] = useState("");
   const [userId, setUserId] = useState("");
-  const [listKaryawan, setListKaryawan] = useState([]);
+  const [listTeknisi, setListTeknisi] = useState([]);
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
-    getAllKaryawan();
+    getAllTeknisi();
     const getServisById = async () => {
       try {
         const response = await axios.get(
@@ -28,11 +28,11 @@ const FormPenjadwalan = () => {
     getServisById();
   }, [id]);
 
-  const getAllKaryawan = async () => {
+  const getAllTeknisi = async () => {
     const response = await axios.get(
-      process.env.REACT_APP_API_KEY + "/allkaryawan"
+      process.env.REACT_APP_API_KEY + "/allteknisi"
     );
-    setListKaryawan(response.data);
+    setListTeknisi(response.data);
   };
 
   const PenjadwalanServis = async (e) => {
@@ -60,7 +60,7 @@ const FormPenjadwalan = () => {
         <div className="card-content">
           <h1 className="title">Penjadwalan Servis</h1>
           <h2 className="subtitle">
-            Pilih tanggal servis dan karyawan yang bertugas
+            Pilih tanggal servis dan teknisi yang bertugas
           </h2>
           <hr />
           <div className="content">
@@ -74,6 +74,7 @@ const FormPenjadwalan = () => {
                     className="input"
                     value={dateServis}
                     onChange={(e) => setdateServis(e.target.value)}
+                    required
                   />
                 </div>
               </div>
@@ -87,11 +88,12 @@ const FormPenjadwalan = () => {
                       <select
                         value={userId}
                         onChange={(e) => setUserId(e.target.value)}
+                        required
                       >
-                        <option value="">Pilih Karyawan</option>
-                        {listKaryawan.map((karya) => (
-                          <option value={karya.id}>
-                            {karya.name} - {karya.email} - id:{karya.id}
+                        <option value="">Pilih Teknisi</option>
+                        {listTeknisi.map((teknisi) => (
+                          <option value={teknisi.id}>
+                            {teknisi.name} - {teknisi.email} - id:{teknisi.id}
                           </option>
                         ))}
                       </select>

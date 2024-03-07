@@ -63,6 +63,7 @@ const FormRegister = () => {
                   placeholder="Masukkan nama anda"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  required
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-user"></i>
@@ -82,6 +83,7 @@ const FormRegister = () => {
                   placeholder="Masukkan nomor telp anda"
                   value={no_telp}
                   onChange={(e) => setNo_telp(e.target.value)}
+                  required
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-phone"></i>
@@ -101,6 +103,7 @@ const FormRegister = () => {
                   placeholder="Masukkan email anda"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-envelope"></i>
@@ -152,6 +155,7 @@ const FormRegister = () => {
                       placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      required
                     />
                     <span className="icon is-small is-left">
                       <i className="fas fa-key"></i>
@@ -170,6 +174,7 @@ const FormRegister = () => {
                       placeholder="Confirm Password"
                       value={confPassword}
                       onChange={(e) => setConfPassword(e.target.value)}
+                      required
                     />
                     <span className="icon is-small is-left">
                       <i className="fas fa-key"></i>

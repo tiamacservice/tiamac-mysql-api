@@ -41,6 +41,7 @@ const FormAddProduct = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Name"
+                    required
                   />
                 </div>
               </div>
@@ -53,6 +54,7 @@ const FormAddProduct = () => {
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                     placeholder="Price"
+                    required
                   />
                 </div>
               </div>

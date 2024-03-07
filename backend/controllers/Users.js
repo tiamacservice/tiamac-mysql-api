@@ -11,12 +11,12 @@ export const getUsers = async (req, res) => {
   }
 };
 
-export const getAllKaryawan = async (req, res) => {
+export const getAllTeknisi = async (req, res) => {
   try {
     const response = await User.findAll({
       attributes: ["uuid", "name", "role", "email", "id"],
       where: {
-        role: "karyawan",
+        role: "teknisi",
       },
     });
     res.status(200).json(response);

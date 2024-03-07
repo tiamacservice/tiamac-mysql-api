@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import Layout from "./Layout";
-import Welcome from "../components/WelcomeTeknisi";
+import FormKonfirmasiSelesai from "../components/FormServisSelesai";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMe } from "../features/authSlice";
 
-const Dashboard = () => {
+const KonfirmasiSelesai = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isError } = useSelector((state) => state.auth);
@@ -22,9 +22,9 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <Welcome />
+      <FormKonfirmasiSelesai />
     </Layout>
   );
 };
 
-export default Dashboard;
+export default KonfirmasiSelesai;

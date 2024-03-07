@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 const NewPesanan = () => {
   const [alamat, setAlamat] = useState("");
   const [provinsi, setProvinsi] = useState("");
-  const [ser1, setSer1] = useState("");
-  const [ser2, setSer2] = useState("");
-  const [ser3, setSer3] = useState("");
-  const [ser4, setSer4] = useState("");
+  const [ser1, setSer1] = useState("Tidak");
+  const [ser2, setSer2] = useState("Tidak");
+  const [ser3, setSer3] = useState("Tidak");
+  const [ser4, setSer4] = useState("Tidak");
   const [hrg1, setHrg1] = useState(0);
   const [hrg2, setHrg2] = useState(0);
   const [hrg3, setHrg3] = useState(0);
@@ -59,6 +59,7 @@ const NewPesanan = () => {
                     value={alamat}
                     onChange={(e) => setAlamat(e.target.value)}
                     placeholder="Hanya untuk sekitar daerah jakarta"
+                    required
                   />
                 </div>
               </div>

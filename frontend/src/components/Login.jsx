@@ -43,7 +43,7 @@ const Login = () => {
               >
                 <h1 className="title is-10">LOGIN STAFF</h1>
                 <p className="description is-size-7 is-italic">
-                  login sebagai admin atau karyawan
+                  login sebagai admin atau teknisi
                 </p>
                 <form onSubmit={Auth}>
                   <div className="field">
@@ -54,6 +54,7 @@ const Login = () => {
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        required
                       />
                     </div>
                   </div>
@@ -66,6 +67,7 @@ const Login = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Password"
+                        required
                       />
                     </div>
                   </div>
